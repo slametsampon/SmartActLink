@@ -27,19 +27,19 @@ export default function HomeContent() {
 
               <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
                   <div class="p-3 bg-white shadow-md rounded-lg text-center">
-                      <img src="../public/images/solar-panel.png" alt="Solar" class="w-16 mx-auto">
+                      <img src="/SmartActLink/public/images/solar-panel.png" alt="Solar" class="w-16 mx-auto">
                       <h3 class="font-semibold text-xl text-gray-600">Mandiri dengan Panel Surya</h3>
                       <p class="text-gray-600">Operasional tanpa jaringan listrik.</p>
                   </div>
 
                   <div class="p-3 bg-white shadow-md rounded-lg text-center">
-                      <img src="../public/images/smartpone.png" alt="Smartphone" class="w-16 mx-auto mb-4">
+                      <img src="/SmartActLink/public/images/smartpone.png" alt="Smartphone" class="w-16 mx-auto mb-4">
                       <h3 class="font-semibold text-xl text-gray-600">Akses via Smartphone</h3>
                       <p class="text-gray-600">Koneksi langsung tanpa WiFi eksternal.</p>
                   </div>
 
                   <div class="p-3 bg-white shadow-md rounded-lg text-center">
-                      <img src="../public/images/industrial.png" alt="Devices" class="w-16 mx-auto mb-4">
+                      <img src="/SmartActLink/public/images/industrial.png" alt="Devices" class="w-16 mx-auto mb-4">
                       <h3 class="font-semibold text-xl text-gray-600">Kompatibel dengan Berbagai Peralatan</h3>
                       <p class="text-gray-600">Pompa, lampu, pintu otomatis, dan lainnya.</p>
                   </div>
