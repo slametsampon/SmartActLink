@@ -27,7 +27,7 @@ export default function HomeContent() {
 
               <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
                   <div class="p-3 bg-white shadow-md rounded-lg text-center">
-                      <img src="/SmartActLink/public/images/solar-panel.png" alt="Solar" class="w-16 mx-auto">
+                      <img src="https://github.com/slametsampon/SmartActLink/blob/main/public/images/industrial.png" alt="Solar" class="w-16 mx-auto">
                       <h3 class="font-semibold text-xl text-gray-600">Mandiri dengan Panel Surya</h3>
                       <p class="text-gray-600">Operasional tanpa jaringan listrik.</p>
                   </div>
