@@ -1,4 +1,7 @@
+import GLOBAL_ENV from '../config.dev.js';
 export default function HomeContent() {
+  // Akses variabel environment
+  const HOME = GLOBAL_ENV.HOME;
   const main = document.createElement('main');
   main.className = 'flex-1 container mx-auto p-8 text-center pt-20';
 
@@ -27,19 +30,19 @@ export default function HomeContent() {
 
               <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
                   <div class="p-3 bg-white shadow-md rounded-lg text-center">
-                      <img src="/SmartActLink/public/images/solar-panel.png" alt="Solar" class="w-16 mx-auto">
+                      <img src="${HOME}public/images/solar-panel.png" alt="Solar" class="w-16 mx-auto">
                       <h3 class="font-semibold text-xl text-gray-600">Mandiri dengan Panel Surya</h3>
                       <p class="text-gray-600">Operasional tanpa jaringan listrik.</p>
                   </div>
 
                   <div class="p-3 bg-white shadow-md rounded-lg text-center">
-                      <img src="/SmartActLink/public/images/smartpone.png" alt="Smartphone" class="w-16 mx-auto mb-4">
+                      <img src="${HOME}public/images/smartpone.png" alt="Smartphone" class="w-16 mx-auto mb-4">
                       <h3 class="font-semibold text-xl text-gray-600">Akses via Smartphone</h3>
                       <p class="text-gray-600">Koneksi langsung tanpa WiFi eksternal.</p>
                   </div>
 
                   <div class="p-3 bg-white shadow-md rounded-lg text-center">
-                      <img src="/SmartActLink/public/images/industrial.png" alt="Devices" class="w-16 mx-auto mb-4">
+                      <img src="${HOME}public/images/industrial.png" alt="Devices" class="w-16 mx-auto mb-4">
                       <h3 class="font-semibold text-xl text-gray-600">Kompatibel dengan Berbagai Peralatan</h3>
                       <p class="text-gray-600">Pompa, lampu, pintu otomatis, dan lainnya.</p>
                   </div>
@@ -48,12 +51,12 @@ export default function HomeContent() {
       </section>
 
       <!-- Call to Action -->
-      <section class="text-center mt-3 text-gray-700 bg-blue-50 bg-opacity-65 rounded-lg p-3">
+      <section class="text-center mt-3 text-gray-700 bg-blue-100 bg-opacity-65 rounded-lg p-3">
         <h2 class="font-extrabold">Siap untuk Memaksimalkan Perangkat Anda?</h2>
         <p class="font-extralight mb-3 italic">Daftar sekarang dan optimalkan hasil pertanian Anda.</p>
-        <div class="space-x-4">
-            <a href="#features" class="bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg text-lg">Pelajari Lebih Lanjut</a>
-            <a href="#purchase" class="bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-lg text-lg">Dapatkan Sekarang</a>
+        <div class="md:mx-8 flex flex-col md:flex-row md:justify-between space-y-3 md:space-y-0">
+            <a href="#features" class="block bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg text-lg">Pelajari Lebih Lanjut</a>
+            <a href="#purchase" class="block bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-lg text-lg">Dapatkan Sekarang</a>
         </div>
       </section>
 
