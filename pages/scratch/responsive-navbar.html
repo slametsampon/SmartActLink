@@ -10,7 +10,8 @@
     class="relative bg-cover bg-fixed bg-center"
     style="background-image: url('/public/images/SmartActLinkBackground.webp')"
   >
-    <header class="absolute inset-0 bg-black/40 flex flex-col min-h-full">
+    <!-- Root Element -->
+    <div id="app" class="absolute inset-0 bg-black/40 flex flex-col min-h-full">
       <nav
         class="container mx-auto flex justify-between items-center bg-blue-600 text-white shadow-md fixed top-0 left-0 min-w-full"
       >
@@ -75,8 +76,8 @@
           </li>
         </ul>
       </nav>
-    </header>
+    </div>
 
-    <script src="responsive-navbar.js" defer></script>
+    <script src="responsive-navbar-toggle.js" defer></script>
   </body>
 </html>
