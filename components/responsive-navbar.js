@@ -4,7 +4,7 @@ export default function Navbar() {
   const HOME = GLOBAL_ENV.HOME;
   const navbar = document.createElement('nav');
   navbar.className =
-    'container mx-auto flex justify-between items-center bg-blue-600 text-white shadow-md fixed top-0 left-0 min-w-full';
+    'container px-3 mx-auto flex justify-between items-center bg-blue-600 text-white shadow-md fixed top-0 left-0 min-w-full';
 
   navbar.innerHTML = `
         <!-- Logo -->
@@ -40,7 +40,7 @@ export default function Navbar() {
         <!-- Menu -->
         <ul
           id="menu"
-          class="hidden flex-col text-gray-800 absolute top-16 right-0 bg-white sm:bg-blue-600 sm:text-white rounded-md sm:static sm:flex sm:flex-row sm:space-y-0 sm:space-x-8 sm:min-w-fit sm:mr-6 min-w-max"
+          class="hidden mr-3 px-3 flex-col text-gray-800 absolute top-16 right-0 bg-white sm:bg-blue-600 sm:text-white rounded-md sm:static sm:flex sm:flex-row sm:space-y-0 sm:space-x-8 sm:min-w-fit sm:mr-6 min-w-max"
         >
           <li>
             <a href="${HOME}pages/dashboard" class="hover:text-gray-200"
