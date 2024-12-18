@@ -40,11 +40,11 @@ export default function Navbar() {
         <!-- Menu -->
         <ul
           id="menu"
-          class="hidden flex-col text-gray-800 absolute top-16 right-0 bg-white sm:bg-blue-600 sm:text-white rounded-md sm:static sm:flex sm:flex-row sm:space-y-0 sm:space-x-8 sm:min-w-fit sm:mr-6 min-w-max"
+          class="hidden flex-col text-blue-600 absolute top-16 right-0 bg-green-100 sm:bg-blue-600 sm:text-white rounded-md sm:static sm:flex sm:flex-row sm:space-y-0 sm:space-x-8 sm:min-w-fit sm:mr-6 min-w-max"
         >
           <li>
-            <a href="${HOME}pages/dashboard" class="hover:text-gray-200"
-              >Dashboard</a
+          <a href="${HOME}pages/dashboard" class="hover:text-blue-800"
+          >Dashboard</a
             >
           </li>
           <li>

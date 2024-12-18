@@ -40,31 +40,31 @@ export default function Navbar() {
         <!-- Menu -->
         <ul
           id="menu"
-          class="hidden mr-3 px-3 flex-col text-gray-800 absolute top-16 right-0 bg-white sm:bg-blue-600 sm:text-white rounded-md sm:static sm:flex sm:flex-row sm:space-y-0 sm:space-x-8 sm:min-w-fit sm:mr-6 min-w-max"
+          class="hidden mr-2 px-3 py-3 flex-col text-blue-600 bg-green-100 absolute top-16 right-0 sm:bg-blue-600 sm:text-white rounded-md sm:static sm:flex sm:flex-row sm:space-y-0 sm:space-x-8 sm:min-w-fit sm:mr-6 min-w-max"
         >
           <li>
-            <a href="${HOME}pages/dashboard" class="hover:text-gray-200"
+            <a href="${HOME}pages/dashboard" class="hover:text-orange-600"
               >Dashboard</a
             >
           </li>
           <li>
-            <a href="${HOME}pages/devices" class="hover:text-gray-200"
+            <a href="${HOME}pages/devices" class="hover:text-orange-600"
               >Devices</a
             >
           </li>
           <li>
-            <a href="${HOME}pages/config" class="hover:text-gray-200">Config</a>
+            <a href="${HOME}pages/config" class="hover:text-orange-600">Config</a>
           </li>
           <li>
-            <a href="${HOME}pages/history" class="hover:text-gray-200"
+            <a href="${HOME}pages/history" class="hover:text-orange-600"
               >History</a
             >
           </li>
           <li>
-            <a href="${HOME}pages/help" class="hover:text-gray-200">Help</a>
+            <a href="${HOME}pages/help" class="hover:text-orange-600">Help</a>
           </li>
           <li>
-            <a href="${HOME}pages/about" class="hover:text-gray-200">About</a>
+            <a href="${HOME}pages/about" class="hover:text-orange-600">About</a>
           </li>
         </ul>
       </div>
