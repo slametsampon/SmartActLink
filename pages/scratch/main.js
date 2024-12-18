@@ -11,8 +11,24 @@ function App() {
   const footer = Footer();
 
   app.appendChild(navbar);
-  //app.appendChild(homeContent);
+  app.appendChild(homeContent);
   app.appendChild(footer);
+
+  //add listener for toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  // Tampilkan/Sembunyikan menu saat tombol hamburger diklik
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+
+  // Tutup menu jika item diklik
+  menu.querySelectorAll('a').forEach((item) => {
+    console.log('item : ', item);
+    item.addEventListener('click', () => {
+      menu.classList.add('hidden');
+    });
+  });
 }
 
 document.addEventListener('DOMContentLoaded', App);
