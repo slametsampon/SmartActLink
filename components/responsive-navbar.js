@@ -10,7 +10,7 @@ export default function Navbar() {
         <!-- Logo -->
         <a href="${HOME}" class="flex flex-row">
           <img
-            src="/public/images/iconSmartActIcon.webp"
+            src="${HOME}/public/images/iconSmartActIcon.webp"
             alt="SmartActLink"
             class="rounded-xl h-[50px]"
           />
