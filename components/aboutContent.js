@@ -7,22 +7,38 @@ export default function AboutContent() {
 
   main.innerHTML = `
     <!-- Overlay Global -->
-    <div class="min-h-screen text-white">
+    <div class="min-h-screen text-gray-800">
       
       <!-- Header (Sudah Ada) -->
-      <header class="pt-0">
-        <h1 class="text-2xl mb-3">Smart<span class="italic font-bold text-orange-600">Act</span>Link</h1>
-      </header>
-
-      <section id="hero">
-          <div class="container mx-auto h-full flex flex-col justify-center items-center text-center text-white">
-              <h1 class="text-xl font-bold mb-4 italic">About Page</h1>
-              <p class="text-lg md:text-xl mb-6 font-thin underline">
-                Under Construction !
-              </p>
-          </div>
+      <section class="block text-center py-12">
+        <h1 class="text-4xl font-bold">SmartActLink: Solusi IoT Inovatif</h1>
+        <p class="mt-3 text-lg">Menghubungkan Teknologi dan Efisiensi dalam Satu Platform</p>
       </section>
 
+      <section class="py-8">
+        <p class="mt-4 first-line:uppercase first-line:tracking-widest">SmartActLink adalah perangkat IoT berbasis ESP32-C3 Super Mini yang dirancang untuk kendali fleksibel dan mandiri pada berbagai aktuator.</p>
+      </section>
+      <section class="py-8 bg-gray-50">
+        <h2 class="text-2xl font-semibold">Keunggulan SmartActLink</h2>
+        <ul class="mt-6 space-y-4">
+          <li>Mandiri dengan Energi Panel Surya</li>
+          <li>Akses Langsung via Smartphone</li>
+          <li>Kompatibilitas Universal</li>
+          <li>Otomasi Berdasarkan Waktu</li>
+          <li>Integrasi dengan SmartSenseLink</li>
+          <li>Auto-Registrasi Cerdas</li>
+        </ul>
+      </section>
+      <section class="py-8 bg-gray-50">
+        <h2 class="text-2xl font-semibold">Aplikasi SmartActLink</h2>
+        <ul class="mt-6 space-y-4">
+          <li>Hortikultura: Kendali irigasi, pencahayaan, dan pemupukan</li>
+          <li>Hidroponik: Pengaturan pompa air dan nutrisi</li>
+          <li>Akuaponik: Manajemen kualitas air</li>
+          <li>Akuakultur & RAS: Otomasi aerator dan filtrasi</li>
+          <li>Industri & Laboratorium: Pengelolaan otomatis untuk riset</li>
+        </ul>
+      </section>
     </div>
   `;
   return main;
