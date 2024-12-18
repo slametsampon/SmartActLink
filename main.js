@@ -1,6 +1,6 @@
-import Navbar from '/components/responsive-navbar.js';
-import HomeContent from '/components/homeContent.js';
-import Footer from '/components/footer.js';
+import Navbar from './components/responsive-navbar.js';
+import HomeContent from './components/homeContent.js';
+import Footer from './components/footer.js';
 
 function App() {
   const app = document.getElementById('app');
@@ -16,7 +16,7 @@ function App() {
 
   /**
    * Add listentner pada toggle dan harus di-eksekusi
-   * pada akhir elemen DOM
+   * pada akhir elemen DOM agar bisa mengambil id
    */
   const menuToggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('menu');
