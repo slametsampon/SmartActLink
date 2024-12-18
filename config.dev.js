@@ -1,7 +1,7 @@
 const GLOBAL_ENV = {
   NODE_ENV: 'dev',
   //HOME: './',
-  HOME: 'SmartActLink',
+  HOME: '/',
   APP_NAME: 'smartactlink',
   VER: '1.0.0',
 };
