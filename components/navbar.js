@@ -9,7 +9,7 @@ export default function Navbar() {
   navbar.innerHTML = `
     <div class="container px-3 flex justify-between items-center">
       <a href="${HOME}" class="flex flex-row">
-        <img src="${HOME}public/images/iconSmartActIcon.webp" alt="SmartActLink" class="rounded-xl h-[50px]">
+        <img src="public/images/iconSmartActIcon.webp" alt="SmartActLink" class="rounded-xl h-[50px]">
       </a>
       <!-- Hamburger Button -->
       <button
