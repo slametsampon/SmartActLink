@@ -6,24 +6,26 @@ export default function DevicesContent() {
   main.className = 'flex-1 container mx-auto p-8 text-center pt-20';
 
   main.innerHTML = `
-    <!-- Overlay Global -->
-    <div class="min-h-screen text-white">
-      
-      <!-- Header (Sudah Ada) -->
-      <header class="pt-0">
-        <h1 class="text-2xl mb-3">Smart<span class="italic font-bold text-orange-600">Act</span>Link</h1>
-      </header>
+    <h1 class="text-2xl font-bold mb-6">Manajemen Perangkat</h1>
 
-      <section id="hero">
-          <div class="container mx-auto h-full flex flex-col justify-center items-center text-center text-white">
-              <h1 class="text-xl font-bold mb-4 italic">Devices Page</h1>
-              <p class="text-lg md:text-xl mb-6 font-thin underline">
-                Under Construction !
-              </p>
-          </div>
-      </section>
-
+    <!-- Actions -->
+    <div class="mb-4 flex justify-between items-center">
+      <button id="addDevice" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">Tambah Perangkat</button>
+      <input type="text" id="search" placeholder="Cari perangkat..." class="border px-4 py-2 rounded w-1/3">
     </div>
+
+    <!-- Device Table -->
+    <table class="table-auto w-full text-left">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="p-4">Nama Perangkat</th>
+          <th class="p-4">Jenis</th>
+          <th class="p-4">Status</th>
+          <th class="p-4">Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="deviceList"></tbody>
+    </table>
   `;
   return main;
 }

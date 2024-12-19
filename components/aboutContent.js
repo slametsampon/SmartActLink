@@ -10,17 +10,19 @@ export default function AboutContent() {
     <div class="min-h-screen text-gray-800">
       
       <!-- Header (Sudah Ada) -->
-      <section class="block text-center py-12">
-        <h1 class="text-4xl font-bold">SmartActLink: Solusi IoT Inovatif</h1>
-        <p class="mt-3 text-lg">Menghubungkan Teknologi dan Efisiensi dalam Satu Platform</p>
+      <section class="block text-center py-4 mb-3">
+        <h1 class="text-2xl">Smart<span class="font-bold italic text-orange-600">Act</span>Link: Solusi IoT Inovatif</h1>
+        <p class="mt-2 font-thin italic">Menghubungkan Teknologi dan Efisiensi dalam Satu Platform</p>
       </section>
 
-      <section class="py-8">
-        <p class="mt-4 first-line:uppercase first-line:tracking-widest">SmartActLink adalah perangkat IoT berbasis ESP32-C3 Super Mini yang dirancang untuk kendali fleksibel dan mandiri pada berbagai aktuator.</p>
+      <section class="p-3 bg-green-50 rounded-xl">
+        <p class="text-left first-line:uppercase first-line:tracking-widest
+          first-letter:text-7xl first-letter:font-bold first-letter:text-blue-700
+          first-letter:mr-0 first-letter:float-left">Smart<span class="font-bold italic text-orange-600">~Act~</span>Link adalah perangkat IoT canggih yang memanfaatkan platform ESP32-C3 Super Mini untuk memberikan kendali yang fleksibel dan mandiri pada berbagai jenis aktuator. Dengan teknologi ini, pengguna dapat mengontrol perangkat mereka dari jarak jauh tanpa bergantung pada infrastruktur internet yang kompleks. SmartActLink dirancang untuk memenuhi kebutuhan otomasi yang luas, mulai dari pengelolaan sistem pertanian, industri, hingga aplikasi penelitian laboratorium.</p>
       </section>
-      <section class="py-8 bg-gray-50">
-        <h2 class="text-2xl font-semibold">Keunggulan SmartActLink</h2>
-        <ul class="mt-6 space-y-4">
+      <section class="p-3 bg-orange-50 mt-6 rounded-xl text-left">
+        <h2 class="text-2xl font-semibold">Keunggulan Smart<span class="font-bold italic text-orange-600">Act</span>Link</h2>
+        <ul class="mt-3 space-y-2">
           <li>Mandiri dengan Energi Panel Surya</li>
           <li>Akses Langsung via Smartphone</li>
           <li>Kompatibilitas Universal</li>
@@ -29,14 +31,14 @@ export default function AboutContent() {
           <li>Auto-Registrasi Cerdas</li>
         </ul>
       </section>
-      <section class="py-8 bg-gray-50">
-        <h2 class="text-2xl font-semibold">Aplikasi SmartActLink</h2>
-        <ul class="mt-6 space-y-4">
-          <li>Hortikultura: Kendali irigasi, pencahayaan, dan pemupukan</li>
-          <li>Hidroponik: Pengaturan pompa air dan nutrisi</li>
-          <li>Akuaponik: Manajemen kualitas air</li>
-          <li>Akuakultur & RAS: Otomasi aerator dan filtrasi</li>
-          <li>Industri & Laboratorium: Pengelolaan otomatis untuk riset</li>
+      <section class="p-3 rounded-xl bg-gray-50 mt-6 text-left">
+        <h2 class="text-2xl font-semibold">Aplikasi Smart<span class="font-bold italic text-orange-600">Act</span>Link</h2>
+        <ul class="mt-6 space-y-2">
+          <li><b>Hortikultura:</b> Kendali irigasi, pencahayaan, dan pemupukan</li>
+          <li><b>Hidroponik:</b> Pengaturan pompa air dan nutrisi</li>
+          <li><b>Akuaponik:</b> Manajemen kualitas air</li>
+          <li><b>Akuakultur & RAS:</b> Otomasi aerator dan filtrasi</li>
+          <li><b>Industri & Laboratorium:</b> Pengelolaan otomatis untuk riset</li>
         </ul>
       </section>
     </div>

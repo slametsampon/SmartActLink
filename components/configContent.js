@@ -6,23 +6,34 @@ export default function ConfigContent() {
   main.className = 'flex-1 container mx-auto p-8 text-center pt-20';
 
   main.innerHTML = `
-    <!-- Overlay Global -->
-    <div class="min-h-screen text-white">
-      
-      <!-- Header (Sudah Ada) -->
-      <header class="pt-0">
-        <h1 class="text-2xl mb-3">Smart<span class="italic font-bold text-orange-600">Act</span>Link</h1>
-      </header>
-
-      <section id="hero">
-          <div class="container mx-auto h-full flex flex-col justify-center items-center text-center text-white">
-              <h1 class="text-xl font-bold mb-4 italic">Config Page</h1>
-              <p class="text-lg md:text-xl mb-6 font-thin underline">
-                Under Construction !
-              </p>
-          </div>
-      </section>
-
+    <!-- App Container -->
+    <div id="app" class="min-h-screen flex flex-col items-center">
+        <div class="w-full max-w-4xl bg-white shadow-md rounded-lg p-6">
+            <h1 class="text-2xl font-bold mb-4">Smart<span class="text-orange-600 italic">Act</span>Link Configuration</h1>
+            <div id="wizard" class="space-y-6 mt-9">
+                <!-- Step 1: Informasi Umum -->
+                <div id="step-info" class="wizard-step">
+                    <h2 class="text-xl font-semibold">Informasi Umum</h2>
+                    <label class="block mt-4 text-left">
+                        <span class="text-gray-900 font-bold">Nama Perangkat</span>
+                        <input type="text" id="deviceName" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm" placeholder="Masukkan nama perangkat">
+                    </label>
+                    <label class="block mt-4 text-left">
+                        <span class="text-gray-900 font-bold">Lokasi</span>
+                        <input type="text" id="deviceLocation" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm" placeholder="Masukkan lokasi perangkat">
+                    </label>
+                    <label class="block mt-4 text-left">
+                        <span class="text-gray-900 font-bold">Jenis</span>
+                        <input type="text" id="deviceType" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm" placeholder="Masukkan perangkat (Pompa, Solenoid, Lampu)">
+                    </label>
+                </div>
+                <!-- Navigation Buttons -->
+                <div class="flex justify-between mt-6">
+                    <button id="prevBtn" class="hidden bg-green-600 px-4 py-2 rounded-md">Sebelumnya</button>
+                    <button id="nextBtn" class="bg-blue-500 text-white px-4 py-2 rounded-md">Berikutnya</button>
+                </div>
+            </div>
+        </div>
     </div>
   `;
   return main;
