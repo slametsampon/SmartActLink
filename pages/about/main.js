@@ -32,6 +32,17 @@ function App() {
       menu.classList.add('hidden');
     });
   });
+  // Dapatkan URL lengkap
+  console.log('URL Penuh:', window.location.href);
+
+  // Dapatkan path URL (rute)
+  console.log('Path:', window.location.pathname);
+
+  // Dapatkan hostname (domain)
+  console.log('Hostname:', window.location.hostname);
+
+  // Dapatkan parameter query string
+  console.log('Query String:', window.location.search);
 }
 
 document.addEventListener('DOMContentLoaded', App);
