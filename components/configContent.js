@@ -24,7 +24,7 @@ export default function ConfigContent() {
                     </label>
                     <label class="block mt-4 text-left">
                         <span class="text-gray-900 font-bold">Jenis</span>
-                        <input type="text" id="deviceType" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm" placeholder="Masukkan perangkat (Pompa, Solenoid, Lampu)">
+                        <input type="text" id="deviceType" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm" placeholder="Masukkan jenis perangkat (Pompa, Solenoid, Lampu)">
                     </label>
                 </div>
                 <!-- Navigation Buttons -->
