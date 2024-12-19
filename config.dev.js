@@ -1,8 +1,7 @@
 const GLOBAL_ENV = {
   NODE_ENV: 'dev',
-  //HOME: './',
-  //HOME: 'SmartActLink/',
-  HOME: 'https://slametsampon.github.io/SmartActLink/',
+  HOME: 'http://127.0.0.1:5500/',
+  //HOME: 'https://slametsampon.github.io/SmartActLink/',
   APP_NAME: 'smartactlink',
   VER: '1.0.0',
 };
