@@ -14,7 +14,7 @@ export default function Navbar() {
             alt="SmartActLink"
             class="rounded-xl h-[50px]"
           />
-          <p class="sm:hidden px-2 pt-3 text-xl font-thin">Smart<span class="text-orange-600 italic font-extrabold">~Act~</span>Link</p>
+          <p class="sm:hidden px-2 pt-5 text-xl font-thin">Smart<span class="text-orange-600 italic font-extrabold">~Act~</span>Link</p>
         </a>
 
         <!-- Hamburger Button -->
