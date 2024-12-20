@@ -1,7 +1,14 @@
 {
-  "tagname": "Pompa-1",
-  "type": "Pompa",
-  "description": "Pompa sirkulasi hidroponik",
-  "automationMode": "Sensor",
-  "settings": 30
+  "config": {
+    "tagname": "Pompa-1",
+    "type": "Pompa",
+    "description": "Pompa sirkulasi hidroponik",
+    "automationMode": "Sensor",
+    "settings": 30
+  },
+  "operation": {
+    "tagname": "Pompa-1",
+    "status": "On",
+    "automationMode": "Manual"
+  }
 }
