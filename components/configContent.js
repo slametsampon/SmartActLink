@@ -7,9 +7,9 @@ export default function ConfigContent() {
 
   main.innerHTML = `
     <!-- App Container -->
-    <div id="app" class="min-h-screen flex justify-center">
-        <div class="w-full max-w-4xl bg-white shadow-md rounded-lg p-6">
-            <h1 class="text-2xl font-bold mb-4">Smart<span class="italic text-orange-600">Act</span>Link Configuration</h1>
+    <div id="app" class="min-h-screen flex">
+        <div class="w-full max-w-4xl bg-white shadow-md rounded-lg p-3">
+            <h1 class="text-2xl font-bold mb-4 bg-blue-100 p-3 rounded-lg">Smart<span class="italic text-orange-600">Act</span>Link Configuration</h1>
             <form id="configForm" class="space-y-6">
                 <!-- Tagname -->
                 <label class="block text-left">
