@@ -57,25 +57,6 @@ export default function ConfigContent() {
             </form>
         </div>
     </div>
-
-    <script type="module">
-        //import { sendDataToServer } from './../utils/api.js';
-
-        // document.getElementById('configForm').addEventListener('submit', (e) => {
-        //     e.preventDefault();
-        //     const data = {
-        //         tagname: document.getElementById('tagname').value,
-        //         type: document.getElementById('type').value,
-        //         description: document.getElementById('description').value,
-        //         automationMode: document.getElementById('automationMode').value,
-        //         settings: parseInt(document.getElementById('settings').value, 10)
-        //     };
-        //     sendDataToServer(data);
-        // });
-
-        //window.addEventListener('DOMContentLoaded', populateForm);
-        populateForm();
-    </script>
   `;
   return main;
 }
