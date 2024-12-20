@@ -1,4 +1,4 @@
-import GLOBAL_ENV from '../config.dev.js';
+import GLOBAL_ENV from './../config.dev.js';
 export default function ConfigContent() {
   // Akses variabel environment
   const HOME = GLOBAL_ENV.HOME;
@@ -7,34 +7,86 @@ export default function ConfigContent() {
 
   main.innerHTML = `
     <!-- App Container -->
-    <div id="app" class="min-h-screen flex flex-col items-center">
+    <div id="app" class="min-h-screen flex justify-center">
         <div class="w-full max-w-4xl bg-white shadow-md rounded-lg p-6">
-            <h1 class="text-2xl font-bold mb-4">Smart<span class="text-orange-600 italic">Act</span>Link Configuration</h1>
-            <div id="wizard" class="space-y-6 mt-9">
-                <!-- Step 1: Informasi Umum -->
-                <div id="step-info" class="wizard-step">
-                    <h2 class="text-xl font-semibold">Informasi Umum</h2>
-                    <label class="block mt-4 text-left">
-                        <span class="text-gray-900 font-bold">Nama Perangkat</span>
-                        <input type="text" id="deviceName" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm" placeholder="Masukkan nama perangkat">
-                    </label>
-                    <label class="block mt-4 text-left">
-                        <span class="text-gray-900 font-bold">Lokasi</span>
-                        <input type="text" id="deviceLocation" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm" placeholder="Masukkan lokasi perangkat">
-                    </label>
-                    <label class="block mt-4 text-left">
-                        <span class="text-gray-900 font-bold">Jenis</span>
-                        <input type="text" id="deviceType" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm" placeholder="Masukkan jenis perangkat (Pompa, Solenoid, Lampu)">
-                    </label>
+            <h1 class="text-2xl font-bold mb-4">Smart<span class="italic text-orange-600">Act</span>Link Configuration</h1>
+            <form id="configForm" class="space-y-6">
+                <!-- Tagname -->
+                <label class="block text-left">
+                    <span class="text-gray-700 font-bold">Tagname :</span>
+                    <input type="text" id="tagname" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" placeholder="Masukkan tagname perangkat">
+                </label>
+                
+                <!-- Type -->
+                <label class="block text-left">
+                    <span class="text-gray-700 font-bold">Jenis Perangkat : </span>
+                    <select id="type" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        <option value="Pompa">Pompa</option>
+                        <option value="Lampu">Lampu</option>
+                        <option value="Solenoid Valve">Solenoid Valve</option>
+                        <option value="Relay">Relay</option>
+                    </select>
+                </label>
+                
+                <!-- Description -->
+                <label class="block text-left">
+                    <span class="text-gray-700 font-bold">Deskripsi :</span>
+                    <textarea id="description" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" placeholder="Masukkan deskripsi perangkat"></textarea>
+                </label>
+                
+                <!-- Automation Mode -->
+                <label class="block text-left">
+                    <span class="text-gray-700 font-bold">Mode Otomatisasi :</span>
+                    <select id="automationMode" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                        <option value="Manual">Manual</option>
+                        <option value="Sensor">Sensor</option>
+                        <option value="Waktu">Waktu</option>
+                    </select>
+                </label>
+                
+                <!-- Settings -->
+                <label class="block text-left">
+                    <span class="text-gray-700 font-bold">Pengaturan Durasi (detik) :</span>
+                    <input type="number" id="settings" min="1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" placeholder="Masukkan durasi dalam detik">
+                </label>
+                
+                <!-- Submit Button -->
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-800 text-white px-4 py-2 rounded-full">Simpan</button>
                 </div>
-                <!-- Navigation Buttons -->
-                <div class="flex justify-between mt-6">
-                    <button id="prevBtn" class="hidden bg-green-600 px-4 py-2 rounded-md">Sebelumnya</button>
-                    <button id="nextBtn" class="bg-blue-500 text-white px-4 py-2 rounded-md">Berikutnya</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
+
+    <script type="module">
+        import { sendDataToServer } from './../utils/api.js';
+        import data from './../data/staticData.json' assert { type: 'json' };
+
+        async function populateForm() {
+            const staticData = data; // Simulasi data dari file statis
+            if (staticData) {
+                document.getElementById('tagname').value = staticData.tagname || '';
+                document.getElementById('type').value = staticData.type || 'Pompa';
+                document.getElementById('description').value = staticData.description || '';
+                document.getElementById('automationMode').value = staticData.automationMode || 'Manual';
+                document.getElementById('settings').value = staticData.settings || 1;
+            }
+        }
+
+        document.getElementById('configForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = {
+                tagname: document.getElementById('tagname').value,
+                type: document.getElementById('type').value,
+                description: document.getElementById('description').value,
+                automationMode: document.getElementById('automationMode').value,
+                settings: parseInt(document.getElementById('settings').value, 10)
+            };
+            sendDataToServer(data);
+        });
+
+        window.addEventListener('DOMContentLoaded', populateForm);
+    </script>
   `;
   return main;
 }
