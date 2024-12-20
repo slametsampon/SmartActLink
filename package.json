@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build:css": "npx tailwindcss -i ./styles/input.css -o ./styles/output.css --watch"
   },

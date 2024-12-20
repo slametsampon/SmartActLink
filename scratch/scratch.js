@@ -1,6 +1,6 @@
 import Navbar from './responsive-navbar.js';
-import HomeContent from '../../components/homeContent.js';
-import Footer from '../../components/footer.js';
+import HomeContent from '../components/homeContent.js';
+import Footer from '../components/footer.js';
 
 function App() {
   const app = document.getElementById('app');

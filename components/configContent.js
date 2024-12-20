@@ -59,33 +59,22 @@ export default function ConfigContent() {
     </div>
 
     <script type="module">
-        import { sendDataToServer } from './../utils/api.js';
-        import data from './../data/staticData.json' assert { type: 'json' };
+        //import { sendDataToServer } from './../utils/api.js';
 
-        async function populateForm() {
-            const staticData = data; // Simulasi data dari file statis
-            if (staticData) {
-                document.getElementById('tagname').value = staticData.tagname || '';
-                document.getElementById('type').value = staticData.type || 'Pompa';
-                document.getElementById('description').value = staticData.description || '';
-                document.getElementById('automationMode').value = staticData.automationMode || 'Manual';
-                document.getElementById('settings').value = staticData.settings || 1;
-            }
-        }
+        // document.getElementById('configForm').addEventListener('submit', (e) => {
+        //     e.preventDefault();
+        //     const data = {
+        //         tagname: document.getElementById('tagname').value,
+        //         type: document.getElementById('type').value,
+        //         description: document.getElementById('description').value,
+        //         automationMode: document.getElementById('automationMode').value,
+        //         settings: parseInt(document.getElementById('settings').value, 10)
+        //     };
+        //     sendDataToServer(data);
+        // });
 
-        document.getElementById('configForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const data = {
-                tagname: document.getElementById('tagname').value,
-                type: document.getElementById('type').value,
-                description: document.getElementById('description').value,
-                automationMode: document.getElementById('automationMode').value,
-                settings: parseInt(document.getElementById('settings').value, 10)
-            };
-            sendDataToServer(data);
-        });
-
-        window.addEventListener('DOMContentLoaded', populateForm);
+        //window.addEventListener('DOMContentLoaded', populateForm);
+        populateForm();
     </script>
   `;
   return main;
