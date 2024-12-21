@@ -5,7 +5,9 @@ const GLOBAL_ENV = {
   //HOME: 'https://slametsampon.github.io/SmartActLink/',
   HOME: '/SmartActLink/',
   APP_NAME: 'smartactlink',
-  JSON_URL_GITHUB:
-    'https://raw.githubusercontent.com/slametsampon/SmartActLink/refs/heads/main/data/staticData.json',
+  JSON_CONFIG_URL_GITHUB:
+    'https://raw.githubusercontent.com/slametsampon/SmartActLink/refs/heads/main/data/configDevices.json',
+  JSON_OPERATION_URL_GITHUB:
+    'https://raw.githubusercontent.com/slametsampon/SmartActLink/refs/heads/main/data/operationDevices.json',
 };
 export default GLOBAL_ENV;
