@@ -1,0 +1,10 @@
+{
+  "operation": {
+    "tagname": "Pompa-1",
+    "link": "connected",
+    "status": "On",
+    "automationMode": "Sensor",
+    "settings": 30,
+    "value": 25
+  }
+}
