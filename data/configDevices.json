@@ -1,5 +1,10 @@
 {
   "tagname": "Pompa-1",
   "type": "Pompa",
-  "description": "Pompa sirkulasi hidroponik"
+  "description": "Pompa sirkulasi hidroponik",
+  "unit": "Detik",
+  "highRange": 100,
+  "lowRange": 0,
+  "highAlarm": 80,
+  "lowAlarm": 30
 }
