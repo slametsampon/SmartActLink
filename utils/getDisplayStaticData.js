@@ -1,5 +1,10 @@
-import configActuator from './../data/staticData.js';
-export default function getDisplayStaticData() {
+//import configActuator from './../data/staticData.js';
+import fetchDataGithub from './fetchDataGithub.js';
+export default async function getDisplayStaticData() {
+  const jsonUrl =
+    'https://raw.githubusercontent.com/slametsampon/SmartActLink/refs/heads/main/data/staticData.json';
+  const data = await fetchDataGithub(jsonUrl);
+  const configActuator = data.config;
   console.log('Run populateForm()');
   if (configActuator) {
     document.getElementById('tagname').value = configActuator.tagname || '';

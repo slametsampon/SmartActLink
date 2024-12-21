@@ -3,25 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SmartActLink:Home</title>
-    <link href="/styles/output.css" rel="stylesheet" />
+    <title>SmartActLink:Config</title>
+    <link href="../styles/output.css" rel="stylesheet" />
     <link
       rel="icon"
       type="image/x-icon"
-      href="/public/images/iconSmartActIcon.webp"
+      href="../public/images/iconSmartActIcon.webp"
     />
   </head>
-  <body
-    class="relative bg-cover bg-fixed bg-center"
-    style="background-image: url('/public/images/SmartActLinkBackground.webp')"
-  >
+  <body class="relative bg-cover bg-fixed bg-center bg-slate-200">
     <!-- Root Element -->
-    <div
-      id="app"
-      class="absolute inset-0 bg-black/40 flex flex-col min-h-full"
-    ></div>
+    <div id="app"></div>
     <!-- JavaScript Files -->
-    <script type="module" src="./scratch.js"></script>
-    <script type="module" src="./responsive-navbar.js"></script>
+    <script type="module" src="./config.js"></script>
+    <script
+      type="module"
+      src="../components/responsive-navbar.js"
+      defer
+    ></script>
   </body>
 </html>

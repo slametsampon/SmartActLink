@@ -1,15 +1,14 @@
-const jsonUrl =
-  'https://raw.githubusercontent.com/username/repository/branch/data.json';
-
-// Fetch Data dari File JSON
-fetch(jsonUrl)
-  .then((response) => response.json())
-  .then((data) => {
-    const userList = document.getElementById('user-list');
-    data.users.forEach((user) => {
-      const li = document.createElement('li');
-      li.textContent = `${user.id} - ${user.name}`;
-      userList.appendChild(li);
-    });
-  })
-  .catch((error) => console.error('Gagal memuat data:', error));
+// Fungsi untuk Mengambil Data
+export default async function fetchDataGithub(url) {
+  try {
+    const response = await fetch(url); // Tunggu respons
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json(); // Tunggu parsing JSON
+    return data; // Kembalikan data
+  } catch (error) {
+    console.error('Gagal memuat data:', error);
+    return null; // Kembalikan null jika ada kesalahan
+  }
+}
