@@ -8,7 +8,9 @@
   },
   "operation": {
     "tagname": "Pompa-1",
+    "link": "connected",
     "status": "On",
-    "automationMode": "Manual"
+    "automationMode": "Manual",
+    "value": 25
   }
 }
