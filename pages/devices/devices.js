@@ -1,6 +1,7 @@
 import DevicesContent from '../../components/devicesContent.js';
 import Footer from '../../components/footer.js';
 import Navbar from '../../components/responsive-navbar.js';
+import addEventListenerNavbar from '../../components/addEventListenerNavbar.js';
 
 function App() {
   const app = document.getElementById('app');
@@ -13,25 +14,7 @@ function App() {
   app.appendChild(navbar);
   app.appendChild(devicesContent);
   app.appendChild(footer);
-
-  /**
-   * Add listentner pada toggle dan harus di-eksekusi
-   * pada akhir elemen DOM agar bisa mengambil id
-   */
-  const menuToggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('menu');
-  // Tampilkan/Sembunyikan menu saat tombol hamburger diklik
-  menuToggle.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
-
-  // Tutup menu jika item diklik
-  menu.querySelectorAll('a').forEach((item) => {
-    console.log('item : ', item);
-    item.addEventListener('click', () => {
-      menu.classList.add('hidden');
-    });
-  });
+  addEventListenerNavbar();
 }
 
 document.addEventListener('DOMContentLoaded', App);

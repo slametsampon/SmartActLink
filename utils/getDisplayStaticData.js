@@ -1,8 +1,7 @@
-//import configActuator from './../data/staticData.js';
 import fetchDataGithub from './fetchDataGithub.js';
+import GLOBAL_ENV from '../config.dev.js';
 export default async function getDisplayStaticData() {
-  const jsonUrl =
-    'https://raw.githubusercontent.com/slametsampon/SmartActLink/refs/heads/main/data/staticData.json';
+  const jsonUrl = GLOBAL_ENV.JSON_URL_GITHUB;
   const data = await fetchDataGithub(jsonUrl);
   const configActuator = data.config;
   console.log('Run populateForm()');
