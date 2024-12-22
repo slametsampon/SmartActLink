@@ -9,5 +9,7 @@ const GLOBAL_ENV = {
     'https://raw.githubusercontent.com/slametsampon/SmartActLink/refs/heads/main/data/configDevices.json',
   JSON_OPERATION_URL_GITHUB:
     'https://raw.githubusercontent.com/slametsampon/SmartActLink/refs/heads/main/data/operationDevices.json',
+  JSON_OPERATION_LOCAL: '../data/operationDevices.json',
+  JSON_CONFIG_LOCAL: '../data/configDevices.json',
 };
 export default GLOBAL_ENV;
