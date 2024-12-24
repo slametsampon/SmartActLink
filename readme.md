@@ -102,23 +102,7 @@ SmartActLink dirancang untuk mendukung berbagai kebutuhan di sektor pertanian, i
 
 ---
 
-5. **Log & Riwayat (Logs & History)**  
-   **Fungsi:**
-
-   - Menampilkan **riwayat aktivitas** seperti:
-     - Tindakan pengguna (manual override)
-     - Waktu perangkat hidup/mati
-     - Data yang diterima dari perangkat (misalnya, suhu, kelembapan)
-   - **Audit & Pelacakan:** Untuk troubleshooting dan analisis performa.
-
-   **Saran:**
-
-   - Tambahkan **filter log** berdasarkan perangkat, waktu, dan kategori aktivitas.
-   - **Ekspor Data:** Berikan opsi untuk mengekspor log dalam format CSV atau PDF.
-
----
-
-6. **Bantuan (Help)**  
+5. **Bantuan (Help)**  
    **Fungsi:**
 
    - **Panduan Cepat** tentang pengoperasian perangkat.
@@ -132,7 +116,7 @@ SmartActLink dirancang untuk mendukung berbagai kebutuhan di sektor pertanian, i
 
 ---
 
-7. **About (Tentang Kami)**  
+6. **About (Tentang Kami)**  
    **Fungsi:**
 
    - Memberikan **informasi perusahaan**, seperti misi, visi, dan cerita di balik pengembangan SmartActLink.
@@ -188,8 +172,8 @@ Berikut adalah **struktur proyek berbasis HTML, Tailwind CSS, dan Vanilla JavaSc
 │   ├── footerContent.js          → Komponen Footer
 │   └── dll...                    → Komponen lain-lain
 │
-├── /pages             → Halaman utama aplikasi
-│   ├── Dashboard.js   → Halaman dashboard
+├── /pages                     → Halaman utama aplikasi
+│   ├── Dashboard.js           → Halaman dashboard
 │   ├── /dashboard             → Halaman dashboard
 |   |   ├── index.html         → File utama dashboard
 |   |   └── dashboard.js       → File dashboard.js
@@ -223,6 +207,9 @@ Berikut adalah **struktur proyek berbasis HTML, Tailwind CSS, dan Vanilla JavaSc
 │
 ├── tailwind.config.js     → Konfigurasi Tailwind CSS
 ├── package.json           → File konfigurasi proyek (untuk dependensi)
+├── .nojekyll              → File mencegah github pages build dengan jekyll
+├── .gitignore             → File git ignoring
+├── config.dev.js          → File environment parameter
 └── README.md              → Dokumentasi proyek
 ```
 
