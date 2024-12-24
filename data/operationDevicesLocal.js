@@ -1,4 +1,4 @@
-const operationDevicesLocal = [
+const OperationDevicesLocal = [
   {
     tagname: 'Pompa-1',
     link: 'connected',
@@ -16,4 +16,4 @@ const operationDevicesLocal = [
     value: 600,
   },
 ];
-export default operationDevicesLocal;
+export default OperationDevicesLocal;

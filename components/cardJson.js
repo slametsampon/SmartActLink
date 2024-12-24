@@ -1,13 +1,27 @@
 function createList(jsonData) {
+  // Validasi jsonData
+  if (typeof jsonData !== 'object' || jsonData === null) {
+    throw new Error('jsonData harus berupa objek!');
+  }
+
   // Buat elemen <ul>
   const ul = document.createElement('ul');
-  ul.className = 'list-disc list-inside space-y-2';
+  ul.className = 'space-y-2';
 
   // Iterasi properti JSON
+  let i = 0;
   Object.entries(jsonData).map(([key, value]) => {
     const li = document.createElement('li');
-    li.className = 'text-gray-700';
-    li.innerHTML = `<span class="font-bold capitalize">${key}:</span> ${value}`;
+    if (i % 2 === 0) {
+      li.className =
+        'py-2 bg-blue-50 text-gray-700 grid grid-cols-6 gap-4 hover:text-blue-600';
+    } else {
+      li.className = 'text-gray-700 grid grid-cols-6 gap-4 hover:text-blue-600';
+    }
+    i++;
+    li.innerHTML = `
+      <div class="font-bold capitalize col-span-2">${key}</div>
+      <div class="col-span-4">${value}</div>`;
     ul.appendChild(li);
   });
 
@@ -15,15 +29,15 @@ function createList(jsonData) {
 }
 export default function CardJson(jsonData) {
   // Fungsi untuk membuat daftar
-  const div = document.createElement('div');
-  div.className =
-    'container px-3 mt-16 mx-auto flex bg-blue-600 text-white shadow-md';
+  const parentDiv = document.createElement('div');
+  parentDiv.className =
+    'container p-3 mt-16 mx-auto flex flex-col bg-green-50 rounded-xl shadow-md';
+  // Membuat elemen judul
+  const title = document.createElement('h1');
+  title.textContent = 'Peralatan';
+  title.className = 'text-xl font-bold mb-4 mx-auto';
+  parentDiv.appendChild(title); // Tambahkan judul ke induk
 
-  div.innerHTML = `
-    <div class='mt-20'>
-      Halo CardJson
-    </div>
-  `;
-  div.appendChild(createList(jsonData));
-  return div;
+  parentDiv.appendChild(createList(jsonData));
+  return parentDiv;
 }

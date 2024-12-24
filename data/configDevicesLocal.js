@@ -1,4 +1,4 @@
-const configDevicesLocal = [
+const ConfigDevicesLocal = [
   {
     tagname: 'Pompa-1',
     type: 'Pompa',
@@ -20,4 +20,4 @@ const configDevicesLocal = [
     lowAlarm: 300,
   },
 ];
-export default configDevicesLocal;
+export default ConfigDevicesLocal;
