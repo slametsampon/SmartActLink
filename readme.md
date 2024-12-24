@@ -173,36 +173,53 @@ Berikut adalah **struktur proyek berbasis HTML, Tailwind CSS, dan Vanilla JavaSc
 ```
 /smartactlink-website
 │── /public                → File statis yang dapat diakses langsung
-│   ├── /assets            → Gambar, ikon, logo, dll.
-│   ├── favicon.ico        → Ikon situs
-│   └── index.html         → File utama HTML
+│   └── /images            → Gambar, ikon, logo, dll.
+│       ├── favicon.ico    → Ikon situs
+│       └── allImages      → Seluruh file gambar termasuk logo
 │
-├── /src                   → Semua kode sumber pengembangan
-│   ├── /components        → Komponen UI berbasis CDD
-│   │   ├── Navbar.js      → Komponen navbar
-│   │   ├── HeroSection.js → Komponen bagian Hero
-│   │   ├── Dashboard.js   → Komponen Dashboard
-│   │   ├── Devices.js     → Komponen Perangkat
-│   │   ├── Config.js      → Komponen Konfigurasi
-│   │   ├── Logs.js        → Komponen Log & Riwayat
-│   │   └── Footer.js      → Komponen Footer
-│   │
-│   ├── /pages             → Halaman utama aplikasi
-│   │   ├── Home.js        → Halaman beranda utama
-│   │   ├── Dashboard.js   → Halaman dashboard
-│   │   ├── Devices.js     → Halaman manajemen perangkat
-│   │   ├── Config.js      → Halaman pengaturan
-│   │   ├── Logs.js        → Halaman log & riwayat
-│   │   └── About.js       → Halaman tentang kami
-│   │
-│   ├── /styles            → Semua file Tailwind CSS kustom
-│   │   └── main.css       → File CSS utama
-│   │
-│   ├── /utils             → File utilitas dan fungsi global
-│   │   └── api.js         → Fungsi API untuk komunikasi dengan backend
-│   │   └── helpers.js     → Fungsi utilitas umum
-│   │
-│   └── app.js             → File utama yang menginisialisasi aplikasi
+├── /components                   → Komponen UI berbasis CDD
+│   ├── responsive-Navbar.js      → Komponen Navbar-responsive
+│   ├── homeContent.js            → Komponen Home
+│   ├── dashboardContent.js       → Komponen Dashboard
+│   ├── devicesContent.js         → Komponen Perangkat
+│   ├── configContent.js          → Komponen Konfigurasi
+│   ├── helpContent.js            → Komponen Help
+│   ├── aboutContent.js           → Komponen About
+│   ├── footerContent.js          → Komponen Footer
+│   └── dll...                    → Komponen lain-lain
+│
+├── /pages             → Halaman utama aplikasi
+│   ├── Dashboard.js   → Halaman dashboard
+│   ├── /dashboard             → Halaman dashboard
+|   |   ├── index.html         → File utama dashboard
+|   |   └── dashboard.js       → File dashboard.js
+|   |
+│   ├── /devives               → Halaman manajemen perangkat
+|   |   ├── index.html         → File utama devices
+|   |   └── devices.js         → File devices.js
+|   |
+│   ├── /config                → Halaman pengaturan
+|   |   ├── index.html         → File utama config
+|   |   └── config.js          → File config.js
+|   |
+│   ├── /help                  → Halaman bantuan
+|   |   ├── index.html         → File utama help
+|   |   └── help.js            → File help.js
+|   |
+│   └── /about                 → Halaman tentang kami
+|       ├── index.html         → File utama help
+|       └── about.js           → File about.js
+│
+├── /styles            → Semua file Tailwind CSS kustom
+|   ├── input.css      → File utama help
+│   └── output.css     → File CSS utama
+│
+├── /utils             → File utilitas dan fungsi global
+│   └── api.js         → Fungsi API untuk komunikasi dengan backend
+│   └── helpers.js     → Fungsi utilitas umum
+│
+├── index.html         → File utama yang menginisialisasi aplikasi
+├── main.js            → File utama yang menginisialisasi aplikasi
 │
 ├── tailwind.config.js     → Konfigurasi Tailwind CSS
 ├── package.json           → File konfigurasi proyek (untuk dependensi)
@@ -213,35 +230,36 @@ Berikut adalah **struktur proyek berbasis HTML, Tailwind CSS, dan Vanilla JavaSc
 
 ### **/public**
 
-- Berisi file statis seperti gambar, ikon, dan file `index.html`.
+- Berisi file statis seperti gambar, ikon
 - Semua file dalam folder ini diakses langsung oleh browser tanpa proses build.
 
-### **/src**
-
-Berisi semua file pengembangan aplikasi, dibagi menjadi beberapa sub-folder:
-
-#### **a. /components**
+### **/components**
 
 - Berisi komponen UI kecil yang dapat digunakan kembali.
 - Setiap komponen memiliki **struktur modular** dengan tanggung jawab tunggal.
 - Contoh: `Navbar.js`, `HeroSection.js`, dll.
 
-#### **b. /pages**
+### **/pages**
 
 - Berisi file halaman utama yang **merakit komponen** dari folder `/components`.
 - Halaman ini sesuai dengan **rute aplikasi** seperti Home, Dashboard, Devices, dll.
 
-#### **c. /styles**
+### **styles**
 
 - File CSS kustom untuk menyesuaikan **Tailwind CSS**.
 - Contoh: `main.css` untuk menambahkan kelas CSS tambahan di luar Tailwind.
 
-#### **d. /utils**
+### **utils**
 
 - File yang berisi fungsi **helper** dan **fungsi API** untuk komunikasi dengan backend.
 - Memastikan **Separation of Concerns (SoC)** dengan memisahkan logika bisnis dari tampilan UI.
 
-#### **e. app.js**
+### **index.html**
+
+- File utama untuk masuknya program.
+- Inisialisasi aplikasi, memuat halaman awal, dan mengatur event listener global.
+
+### **main.js**
 
 - File utama yang menghubungkan semua bagian proyek.
 - Inisialisasi aplikasi, memuat halaman awal, dan mengatur event listener global.
@@ -268,6 +286,6 @@ Berisi semua file pengembangan aplikasi, dibagi menjadi beberapa sub-folder:
 **Contoh Penggunaan:**
 
 - **Menambahkan Komponen Baru:** Tambahkan file `.js` ke `/components` dan impor di halaman terkait di `/pages`.
-- **Menambahkan Halaman Baru:** Buat file baru di `/pages` dan tambahkan rute yang sesuai di `app.js`.
+- **Menambahkan Halaman Baru:** Buat file baru di `/pages` dan tambahkan rute yang sesuai di `main.js`.
 
 ---
