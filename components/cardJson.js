@@ -27,14 +27,14 @@ function createList(jsonData) {
 
   return ul;
 }
-export default function CardJson(jsonData) {
+export default function CardJson(jsonData, titleText) {
   // Fungsi untuk membuat daftar
   const parentDiv = document.createElement('div');
   parentDiv.className =
-    'container p-3 mt-16 mx-auto flex flex-col bg-green-50 rounded-xl shadow-md';
+    'container p-3 mx-auto flex flex-col bg-green-50 rounded-xl shadow-md text-left';
   // Membuat elemen judul
   const title = document.createElement('h1');
-  title.textContent = 'Peralatan';
+  title.textContent = titleText;
   title.className = 'text-xl font-bold mb-4 mx-auto';
   parentDiv.appendChild(title); // Tambahkan judul ke induk
 

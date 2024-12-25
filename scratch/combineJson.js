@@ -1,4 +1,4 @@
-import getLocalJson from '../utils/getLocalJson.js';
+import getArrayJson from '../utils/getArrayJson.js';
 import ConfigDevicesLocal from '../data/configDevicesLocal.js';
 import OperationDevicesLocal from '../data/operationDevicesLocal.js';
 
@@ -9,8 +9,8 @@ function isEmptyObject(data) {
 }
 
 export default async function combineJson(tagname) {
-  const configData = await getLocalJson(ConfigDevicesLocal, tagname);
-  const operationData = await getLocalJson(OperationDevicesLocal, tagname);
+  const configData = await getArrayJson(ConfigDevicesLocal, tagname);
+  const operationData = await getArrayJson(OperationDevicesLocal, tagname);
   if (isEmptyObject(configData) || isEmptyObject(operationData)) {
     console.log('Data Kosong');
     return;

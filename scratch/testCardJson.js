@@ -11,7 +11,7 @@ async function App() {
 
   // Buat dan tambahkan komponen
   const navbar = Navbar();
-  const cardJson = CardJson(jsonCombine);
+  const cardJson = CardJson(jsonCombine, 'Peralatan');
   const footer = Footer();
 
   app.appendChild(navbar);

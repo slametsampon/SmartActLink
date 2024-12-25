@@ -1,6 +1,6 @@
 // import { readFile } from 'fs/promises';
 
-export default async function getLocalJson(jsonArray, tagname) {
+export default async function getArrayJson(jsonArray, tagname) {
   try {
     // const data = await readFile(path, 'utf8'); // Membaca file secara asynchronous
     // const parsedData = JSON.parse(data); // Mengonversi string JSON ke objek

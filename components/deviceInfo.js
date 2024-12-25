@@ -1,11 +1,16 @@
-export default function DeviceInfo() {
+import getArrayJson from '../utils/getArrayJson.js';
+import CardJson from './cardJson.js';
+import OperationDevicesLocal from '../data/operationDevicesLocal.js';
+import isEmptyObject from '../utils/isEmptyObject.js';
+export default async function DeviceInfo() {
+  const jsonData = await getArrayJson(OperationDevicesLocal, 'Sensor-1');
+  if (isEmptyObject(jsonData)) {
+    console.log('jsonData Data kosong');
+    return;
+  }
+  const cardJson = CardJson(jsonData, 'Actuator');
+
   const DeviceInfo = document.getElementById('device-info');
-  DeviceInfo.innerHTML = `
-        <h2 class="text-lg font-bold">Peralatan</h2>
-        <p><strong>Nama:</strong> Pompa Air 1</p>
-        <p><strong>Tipe:</strong> Pompa</p>
-        <p><strong>Status Koneksi:</strong> <span id="device-status" class="bg-red-500 text-white px-2 py-1 rounded-xl">OFF</span></p>
-        <button id="toggle-btn" onclick="toggleDevice()" class="mt-4 bg-blue-600 hover:bg-blue-800 hover:font-bold text-white px-4 py-2 rounded-3xl">Turn ON</button>
-    `;
+  DeviceInfo.appendChild(cardJson);
   return DeviceInfo;
 }
