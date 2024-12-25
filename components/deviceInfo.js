@@ -10,7 +10,7 @@ export default async function DeviceInfo() {
   }
   const cardJson = CardJson(jsonData, 'Actuator');
 
-  const DeviceInfo = document.getElementById('device-info');
-  DeviceInfo.appendChild(cardJson);
-  return DeviceInfo;
+  const deviceInfoComp = document.createElement('div');
+  deviceInfoComp.appendChild(cardJson);
+  return deviceInfoComp;
 }
