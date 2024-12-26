@@ -1,23 +1,12 @@
-import Footer from '../components/footer.js';
-import Navbar from '../components/responsive-navbar.js';
+import getArrayJson from '../utils/getArrayJson.js';
+import ConfigDevicesLocal from '../data/configDevicesLocal.js';
 import CardJson from '../components/cardJson.js';
-import addEventListenerNavbar from '../components/addEventListenerNavbar.js';
-import combineJson from './combineJson.js';
 
 async function App() {
-  const app = document.getElementById('app');
-  const jsonCombine = await combineJson('Pompa-1');
-  console.log('jsonCombine : ', jsonCombine);
-
-  // Buat dan tambahkan komponen
-  const navbar = Navbar();
-  const cardJson = CardJson(jsonCombine, 'Peralatan');
-  const footer = Footer();
-
-  app.appendChild(navbar);
-  app.appendChild(cardJson);
-  app.appendChild(footer);
-  addEventListenerNavbar(); //aktifkan toggle
+  const resulDev = await getArrayJson(ConfigDevicesLocal, 'Pompa-1');
+  const detailDev = document.getElementById('detail-device');
+  detailDev.appendChild(CardJson(resulDev));
+  return detailDev;
 }
 
 document.addEventListener('DOMContentLoaded', App);
