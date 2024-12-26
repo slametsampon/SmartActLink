@@ -19,7 +19,7 @@ async function App() {
   addEventListenerNavbar(); //aktifkan toggle
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
   App();
   //Fungsi yang dijalankan setelah DOM load total
 });

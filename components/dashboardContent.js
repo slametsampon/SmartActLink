@@ -19,10 +19,10 @@ export default async function DashboardContent() {
     'container mx-auto p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
 
   const wrapperDevicesInfo = document.createElement('div');
-  wrapperDevicesInfo.className = 'bg-blue-50 shadow-md rounded-lg p-3 mb-3';
   wrapperDevicesInfo.appendChild(infoDev);
 
   const devicesTrending = document.createElement('div');
+  devicesTrending.className = 'bg-blue-50 shadow-md rounded-lg p-3 mb-3';
   devicesTrending.appendChild(DeviceTrending());
 
   const wrapperLogActivity = document.createElement('div');

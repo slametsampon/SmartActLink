@@ -15,9 +15,9 @@ export default function DevicesContent() {
     <table class="table-auto w-full text-left">
       <thead>
         <tr class="bg-gray-200">
-          <th class="p-4">Nama Perangkat</th>
-          <th class="p-4">Jenis</th>
-          <th class="p-4">Status</th>
+          <th class="p-4">Tagname</th>
+          <th class="p-4">Type</th>
+          <th class="p-4">Link</th>
           <th class="p-4">Aksi</th>
         </tr>
       </thead>

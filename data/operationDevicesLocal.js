@@ -6,6 +6,8 @@ const OperationDevicesLocal = [
     automationMode: 'Sensor',
     settings: 30,
     value: 25,
+    alarm: 'no-alarm',
+    error: 'no-error',
   },
   {
     tagname: 'Sensor-1',
@@ -14,6 +16,8 @@ const OperationDevicesLocal = [
     automationMode: 'Sensor',
     settings: 700,
     value: 600,
+    alarm: 'no-alarm',
+    error: 'error',
   },
 ];
 export default OperationDevicesLocal;
