@@ -12,7 +12,7 @@ export default async function DashboardContent() {
   const infoDev = await DeviceInfo();
   // Akses variabel environment
   const main = document.createElement('main');
-  main.className = 'flex-1 container mx-auto p-8 text-center pt-20';
+  main.className = 'flex-1 container mx-auto p-8 text-center pt-20 ';
 
   const mainContent = document.createElement('div');
   mainContent.className =
