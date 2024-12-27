@@ -13,7 +13,7 @@ export default function ConfigContent() {
         >
             Konfigurasi Peralatan
         </h1>
-        <form id="jsonForm" class="space-y-6 bg-green-50 rounded-lg p-2">
+        <form id="jsonForm" class="space-y-6 bg-green-50 rounded-lg p-2 pb-44 mb-5 sm:pb-6">
             <!-- Tagname -->
             <label class="block">
             <span class="text-gray-700 font-bold">Tagname</span>

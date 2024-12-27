@@ -51,7 +51,7 @@ export default function HomeContent() {
       </section>
 
       <!-- Call to Action -->
-      <section class="text-center mt-3 text-gray-700 bg-blue-100 bg-opacity-65 rounded-lg p-3">
+      <section class="text-center mt-3 text-gray-700 bg-blue-100 bg-opacity-65 rounded-lg p-3 mb-14 pb-8">
         <h2 class="font-extrabold">Siap untuk Memaksimalkan Perangkat Anda?</h2>
         <p class="font-extralight mb-3 italic">Daftar sekarang dan optimalkan hasil pertanian Anda.</p>
         <div class="md:mx-8 flex flex-col md:flex-row md:justify-between space-y-3 md:space-y-0">
