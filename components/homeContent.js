@@ -29,26 +29,44 @@ export default function HomeContent() {
               <p class="text-center text-gray-600">Rasakan teknologi IoT yang bekerja untuk Anda.</p>
 
               <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
+              <button
+                id="openModalMandiri"
+                data-fitur='mandiri'>
                   <div class="p-3 bg-white shadow-md rounded-lg text-center">
                       <img src="${HOME}/public/images/solar-panel.png" alt="Solar" class="w-16 mx-auto">
                       <h3 class="font-semibold text-xl text-gray-600">Mandiri dengan Panel Surya</h3>
                       <p class="text-gray-600">Operasional tanpa jaringan listrik.</p>
                   </div>
-
+              </button>
+              <button
+                id="openModalAksesHP"
+                data-fitur='aksesHP'>
                   <div class="p-3 bg-white shadow-md rounded-lg text-center">
                       <img src="${HOME}/public/images/smartpone.png" alt="Smartphone" class="w-16 mx-auto mb-4">
                       <h3 class="font-semibold text-xl text-gray-600">Akses via Smartphone</h3>
                       <p class="text-gray-600">Koneksi langsung tanpa WiFi eksternal.</p>
                   </div>
-
+              </button>
+              <button
+                id="openModalKompatibel"
+                data-fitur='kompatibel'>
                   <div class="p-3 bg-white shadow-md rounded-lg text-center">
                       <img src="${HOME}/public/images/industrial.png" alt="Devices" class="w-16 mx-auto mb-4">
                       <h3 class="font-semibold text-xl text-gray-600">Kompatibel dengan Berbagai Peralatan</h3>
                       <p class="text-gray-600">Pompa, lampu, pintu otomatis, dan lainnya.</p>
                   </div>
+              </button>
               </div>
           </div>
       </section>
+        <!-- Modal -->
+        <div
+        id="modal"
+        class="relative z-10 hidden"
+        aria-labelledby="modal-title"
+        role="dialog"
+        aria-modal="true"
+        ></div>
 
       <!-- Call to Action -->
       <section class="text-center mt-3 text-gray-700 bg-blue-100 bg-opacity-65 rounded-lg p-3 mb-14 pb-8">
