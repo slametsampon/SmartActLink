@@ -1,7 +1,4 @@
-import GLOBAL_ENV from './../config.dev.js';
 export default function ConfigContent() {
-  // Akses variabel environment
-  const HOME = GLOBAL_ENV.HOME;
   const main = document.createElement('main');
   main.className = 'flex-1 mx-auto p-8 text-left pt-20';
 
