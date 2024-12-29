@@ -1,7 +1,9 @@
 import DevicesContent from '../../components/devicesContent.js';
 import Footer from '../../components/footer.js';
-import Navbar from '../../components/responsive-navbar.js';
-import addEventListenerNavbar from '../../components/addEventListenerNavbar.js';
+import Navbar from '../../components/navbar.js';
+import NavbarControl from '../../components/navbarControl.js';
+import ModalDialogFrame from '../../components/modalDialogFrame.js';
+import ModalDialogDetailDevice from '../../components/modalDialogDetailDevice.js';
 
 function App() {
   const app = document.getElementById('app');
@@ -14,7 +16,12 @@ function App() {
   app.appendChild(navbar);
   app.appendChild(devicesContent);
   app.appendChild(footer);
-  addEventListenerNavbar();
+  NavbarControl();
 }
 
-document.addEventListener('DOMContentLoaded', App);
+//document.addEventListener('DOMContentLoaded', App);
+document.addEventListener('DOMContentLoaded', async () => {
+  App();
+  ModalDialogFrame();
+  await ModalDialogDetailDevice();
+});

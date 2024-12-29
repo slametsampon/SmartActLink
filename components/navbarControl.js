@@ -1,4 +1,4 @@
-export default function addEventListenerNavbar() {
+export default function NavbarControl() {
   /**
    * Add listentner pada toggle dan harus di-eksekusi
    * pada akhir elemen DOM agar bisa mengambil id

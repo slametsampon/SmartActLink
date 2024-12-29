@@ -1,7 +1,7 @@
 import HelpContent from '../../components/helpContent.js';
 import Footer from '../../components/footer.js';
-import Navbar from '../../components/responsive-navbar.js';
-import addEventListenerNavbar from '../../components/addEventListenerNavbar.js';
+import Navbar from '../../components/navbar.js';
+import NavbarControl from '../../components/navbarControl.js';
 
 function App() {
   const app = document.getElementById('app');
@@ -14,7 +14,7 @@ function App() {
   app.appendChild(navbar);
   app.appendChild(helpContent);
   app.appendChild(footer);
-  addEventListenerNavbar();
+  NavbarControl();
 }
 
 document.addEventListener('DOMContentLoaded', App);

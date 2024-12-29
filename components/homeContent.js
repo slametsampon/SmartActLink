@@ -59,14 +59,14 @@ export default function HomeContent() {
               </div>
           </div>
       </section>
-        <!-- Modal -->
-        <div
-        id="modal"
-        class="relative z-10 hidden"
-        aria-labelledby="modal-title"
-        role="dialog"
-        aria-modal="true"
-        ></div>
+      <!-- Modal -->
+      <div
+      id="modal"
+      class="relative z-10 hidden"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+      ></div>
 
       <!-- Call to Action -->
       <section class="text-center mt-3 text-gray-700 bg-blue-100 bg-opacity-65 rounded-lg p-3 mb-14 pb-8">

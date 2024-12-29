@@ -1,7 +1,7 @@
 import DashboardContent from '../../components/dashboardContent.js';
 import Footer from '../../components/footer.js';
-import Navbar from '../../components/responsive-navbar.js';
-import addEventListenerNavbar from '../../components/addEventListenerNavbar.js';
+import Navbar from '../../components/navbar.js';
+import NavbarControl from '../../components/navbarControl.js';
 
 async function App() {
   const app = document.getElementById('app');
@@ -16,7 +16,7 @@ async function App() {
   //Dashboard Content
   app.appendChild(dashboardContent);
   app.appendChild(footer);
-  addEventListenerNavbar(); //aktifkan toggle
+  NavbarControl(); //aktifkan toggle
 }
 
 document.addEventListener('DOMContentLoaded', () => {

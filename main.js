@@ -1,7 +1,7 @@
-import Navbar from './components/responsive-navbar.js';
+import Navbar from './components/navbar.js';
 import HomeContent from './components/homeContent.js';
 import Footer from './components/footer.js';
-import addEventListener from './components/addEventListenerNavbar.js';
+import NavbarControl from './components/navbarControl.js';
 import ModalDialogFrame from './components/modalDialogFrame.js';
 import ModalDialogFitur from './components/modalDialogFitur.js';
 
@@ -16,7 +16,7 @@ function App() {
   app.appendChild(navbar);
   app.appendChild(homeContent);
   app.appendChild(footer);
-  addEventListener();
+  NavbarControl();
 }
 
 //document.addEventListener('DOMContentLoaded', App);
