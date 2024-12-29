@@ -1,22 +1,18 @@
-import ModalDialogFrame from './modalDialogFrame.js';
-import CardDetailFitur from '../components/cardDetailFitur.js';
-
-export default function ModalDialog({ resultContent }) {
+export default function ModalDialogControl() {
   const detailContent = document.getElementById('detail-content');
   if (!detailContent) return;
 
   const modal = document.getElementById('modal');
-  const openModalButton = document.getElementById('openModal'); // Tombol pembuka modal
   const cancelButton = document.getElementById('cancelButton');
   const backdrop = document.getElementById('backdrop');
 
   // Fungsi untuk membuka modal
-  const openModal = () => {
+  const openModal = (content) => {
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     modal.querySelector('button').focus();
     detailContent.innerHTML = '';
-    detailContent.appendChild(CardDetailFitur(resultContent, 'Detail Fitur'));
+    detailContent.appendChild(content);
   };
 
   // Fungsi untuk menutup modal
@@ -24,9 +20,6 @@ export default function ModalDialog({ resultContent }) {
     modal.classList.add('hidden');
     modal.classList.remove('flex');
   };
-
-  // Tambahkan event listener ke tombol pembuka modal
-  openModalButton.addEventListener('click', openModal);
 
   // Tambahkan event listener ke tombol dan backdrop untuk menutup modal
   cancelButton.addEventListener('click', closeModal);
@@ -38,8 +31,6 @@ export default function ModalDialog({ resultContent }) {
       closeModal();
     }
   });
-}
 
-document.addEventListener('DOMContentLoaded', async () => {
-  ModalDialogFrame();
-});
+  return { openModal };
+}

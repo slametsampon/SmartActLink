@@ -1,84 +1,81 @@
-import ModalDialogFrame from './modalDialogFrame.js';
-import DetailFitur from '../data/detailFitur.js';
-import CardDetailFitur from './cardDetailFitur.js';
-function getFiturDetail(fitur) {
-  let fiturDisplay = '';
-  if (fitur === 'mandiri') {
-    fiturDisplay = DetailFitur.mandiri;
-  }
-  if (fitur === 'aksesHP') {
-    fiturDisplay = DetailFitur.aksesHP;
-  }
-  if (fitur === 'kompatibel') {
-    fiturDisplay = DetailFitur.kompatibel;
-  }
-  return fiturDisplay;
-}
-async function ModalDialog() {
-  const detailContent = document.getElementById('detail-content');
-  let resultContent = {};
+import ModalDialogControl from './modalDialogControl.js';
+import getFiturDetail from '../utils/getFiturDetail.js';
+import CardDetailContent from './cardDetailContent.js';
+export default function ModalDialogFitur() {
+  // Inisialisasi kontrol modal
+  const { openModal } = ModalDialogControl();
 
-  // Referensi elemen
-  const modal = document.getElementById('modal');
+  // Tombol untuk membuka modal
   const openModalMandiriButton = document.getElementById('openModalMandiri');
+  if (!openModalMandiriButton) {
+    console.error(
+      'modalDialogFitur.js: Tombol "openModalMandiri" tidak ditemukan.'
+    );
+    return;
+  }
   const openModalAksesHPButton = document.getElementById('openModalAksesHP');
+  if (!openModalAksesHPButton) {
+    console.error(
+      'modalDialogFitur.js: Tombol "openModalAksesHP" tidak ditemukan.'
+    );
+    return;
+  }
   const openModalKompatibelButton = document.getElementById(
     'openModalKompatibel'
   );
-  const cancelButton = document.getElementById('cancelButton');
-  const backdrop = document.getElementById('backdrop');
+  if (!openModalKompatibelButton) {
+    console.error(
+      'modalDialogFitur.js: Tombol "openModalKompatibel" tidak ditemukan.'
+    );
+    return;
+  }
 
-  // Fungsi untuk membuka modal
-  const openModal = async (fitur) => {
-    resultContent = getFiturDetail(fitur);
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    modal.querySelector('button').focus(); // Fokus pada tombol pertama di modal
-    if (detailContent) {
-      // Cek apakah elemen ada
-      detailContent.innerHTML = ''; // Menghapus semua anak elemen
-    }
-    detailContent.appendChild(CardDetailFitur(resultContent, 'Detail Fitur'));
-    return detailContent;
-  };
-
-  // Fungsi untuk menutup modal
-  const closeModal = () => {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-  };
-
-  // Tambahkan event listener
+  // Tambahkan event listener untuk tombol
   openModalMandiriButton.addEventListener('click', (event) => {
-    const fitur = event.currentTarget.getAttribute('data-fitur'); // Ambil parameter
-    openModal(fitur); // Panggil openModal
+    const fitur = event.currentTarget.getAttribute('data-fitur');
+    if (!fitur) {
+      console.warn(
+        'modalDialogFitur.js: Atribut "data-fitur" tidak ditemukan pada tombol.'
+      );
+      return;
+    }
+    // Ambil detail fitur dan buat konten modal
+    const resultContent = getFiturDetail(fitur);
+    const content = CardDetailContent(resultContent);
+
+    // Buka modal dengan konten
+    openModal(content);
   });
 
   openModalAksesHPButton.addEventListener('click', (event) => {
-    const fitur = event.currentTarget.getAttribute('data-fitur'); // Ambil parameter
-    openModal(fitur); // Panggil openModal
+    const fitur = event.currentTarget.getAttribute('data-fitur');
+    if (!fitur) {
+      console.warn(
+        'modalDialogFitur.js: Atribut "data-fitur" tidak ditemukan pada tombol.'
+      );
+      return;
+    }
+    // Ambil detail fitur dan buat konten modal
+    const resultContent = getFiturDetail(fitur);
+    const content = CardDetailContent(resultContent);
+
+    // Buka modal dengan konten
+    openModal(content);
   });
 
   openModalKompatibelButton.addEventListener('click', (event) => {
-    const fitur = event.currentTarget.getAttribute('data-fitur'); // Ambil parameter
-    openModal(fitur); // Panggil openModal
-  });
-
-  cancelButton.addEventListener('click', closeModal);
-  backdrop.addEventListener('click', closeModal);
-
-  // Tutup modal saat tombol "Esc" ditekan
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
-      closeModal();
+    const fitur = event.currentTarget.getAttribute('data-fitur');
+    if (!fitur) {
+      console.warn(
+        'modalDialogFitur.js: Atribut "data-fitur" tidak ditemukan pada tombol.'
+      );
+      return;
     }
+    // Ambil detail fitur dan buat konten modal
+    const resultContent = getFiturDetail(fitur);
+    const content = CardDetailContent(resultContent);
+
+    // Buka modal dengan konten
+    openModal(content);
   });
 }
-
-document.addEventListener(
-  'DOMContentLoaded',
-  (async () => {
-    ModalDialogFrame();
-    await ModalDialog();
-  })()
-);

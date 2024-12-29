@@ -3,6 +3,7 @@ import HomeContent from './components/homeContent.js';
 import Footer from './components/footer.js';
 import addEventListener from './components/addEventListenerNavbar.js';
 import ModalDialogFrame from './components/modalDialogFrame.js';
+import ModalDialogFitur from './components/modalDialogFitur.js';
 
 function App() {
   const app = document.getElementById('app');
@@ -19,10 +20,8 @@ function App() {
 }
 
 //document.addEventListener('DOMContentLoaded', App);
-document.addEventListener(
-  'DOMContentLoaded',
-  (() => {
-    App();
-    ModalDialogFrame();
-  })()
-);
+document.addEventListener('DOMContentLoaded', () => {
+  App();
+  ModalDialogFrame();
+  ModalDialogFitur();
+});

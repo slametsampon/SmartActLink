@@ -2,11 +2,6 @@ import summaryDevices from '../utils/summaryDevices.js';
 import getArrayJson from '../utils/getArrayJson.js';
 import ConfigDevicesLocal from '../data/configDevicesLocal.js';
 import CardJson from './cardJson.js';
-// Mock data
-// const devices = [
-//   { id: 1, tagname: 'Pompa Air', type: 'Pompa', status: 'Aktif' },
-//   { id: 2, tagname: 'Sensor Suhu', type: 'Sensor', status: 'Tidak Aktif' },
-// ];
 
 // Inisialisasi aplikasi
 document.addEventListener('DOMContentLoaded', async () => {

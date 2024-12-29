@@ -1340,10 +1340,6 @@ body {
   margin-right: 0px;
 }
 
-.first-letter\:mr-1::first-letter {
-  margin-right: 0.25rem;
-}
-
 .first-letter\:mr-2::first-letter {
   margin-right: 0.5rem;
 }
