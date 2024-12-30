@@ -21,7 +21,7 @@ export default async function ModalDialogDetailDevice() {
             <td>
               <button 
                 onclick="detailDevice('${device.tagname}')"
-                class="p-3 hover:bg-blue-700 hover:text-white hover:rounded-xl">${
+                class="p-3 hover:bg-blue-700 text-green-800 font-bold underline hover:text-white hover:rounded-xl">${
                   device.tagname
                 }
               </button>
