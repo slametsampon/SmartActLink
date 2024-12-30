@@ -69,10 +69,7 @@ export default async function ModalDialogDetailDevice() {
 
   // Detail perangkat
   window.detailDevice = async (tagname) => {
-    //console.log('Detail tagname : ', tagname);
     const resulDev = await getArrayJson(ConfigDevicesLocal, tagname);
-    //console.log('resulDev : ', resulDev);
-    // Buka modal dengan konten
     openModal(CardJson(resulDev));
   };
 
