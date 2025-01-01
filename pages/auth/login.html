@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SmartActLink:Config</title>
+    <title>SmartActLink:Login</title>
     <link href="./../../styles/output.css" rel="stylesheet" />
     <link
       rel="icon"
@@ -40,15 +40,11 @@
       });
     </script>
   </head>
-  <body class="relative bg-cover bg-fixed bg-center bg-slate-200">
+  <body>
     <!-- Root Element -->
-    <div id="app"></div>
+    <div id="app" class="flex flex-col min-h-full"></div>
     <!-- JavaScript Files -->
-    <script type="module" src="./config.js"></script>
-    <script
-      type="module"
-      src="./../../components/configAction.js"
-      defer
-    ></script>
+    <script type="module" src="./login.js"></script>
+    <script type="module" src="../../utils/authHandler.js"></script>
   </body>
 </html>
