@@ -209,7 +209,7 @@ Berikut adalah **struktur proyek berbasis HTML, Tailwind CSS, dan Vanilla JavaSc
 ├── package.json           → File konfigurasi proyek (untuk dependensi)
 ├── .nojekyll              → File mencegah github pages build dengan jekyll
 ├── .gitignore             → File git ignoring
-├── config.dev.js          → File environment parameter
+├── config.env.js          → File environment parameter
 └── README.md              → Dokumentasi proyek
 ```
 

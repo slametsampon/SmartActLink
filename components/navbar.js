@@ -1,7 +1,7 @@
-import GLOBAL_ENV from '../config.dev.js';
+import getHome from '../utils/getHome.js';
 export default function Navbar() {
   // Akses variabel environment
-  const HOME = GLOBAL_ENV.HOME;
+  const HOME = getHome();
   const navbar = document.createElement('nav');
   navbar.className =
     'container px-3 mx-auto flex justify-between items-center bg-blue-600 text-white shadow-md fixed top-0 left-0 min-w-full';
@@ -10,7 +10,7 @@ export default function Navbar() {
         <!-- Logo -->
         <a href="${HOME}" class="flex flex-row">
           <img
-            src="${HOME}/public/images/iconSmartActIcon.webp"
+            src="${HOME}public/images/iconSmartActIcon.webp"
             alt="SmartActLink"
             class="rounded-xl h-[50px]"
           />

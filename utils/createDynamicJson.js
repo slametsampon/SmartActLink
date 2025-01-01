@@ -17,14 +17,14 @@
  *   'https://example.com/feature1'
  * );
  * console.log(summary);
- * // Output:
- * // {
- * //   id: 1,
- * //   tagname: 'feature1',
- * //   type: 'feature',
- * //   description: 'This is a description of feature1.',
- * //   link: 'https://example.com/feature1'
- * // }
+ * Output:
+ *  {
+ *    id: 1,
+ *    tagname: 'feature1',
+ *    type: 'feature',
+ *    description: 'This is a description of feature1.',
+ *    link: 'https://example.com/feature1'
+ *  }
  */
 export default function createDevSummaryJSON(
   id,

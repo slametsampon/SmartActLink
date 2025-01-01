@@ -1,5 +1,5 @@
 import fetchDataGithub from './fetchDataGithub.js';
-import GLOBAL_ENV from '../config.dev.js';
+import GLOBAL_ENV from '../config.env.js';
 export default async function getDisplayStaticData() {
   const jsonUrl = GLOBAL_ENV.JSON_URL_GITHUB;
   const data = await fetchDataGithub(jsonUrl);

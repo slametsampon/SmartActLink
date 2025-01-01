@@ -10,6 +10,35 @@
       type="image/x-icon"
       href="./../../public/images/iconSmartActIcon.webp"
     />
+    <script type="module">
+      import getHome from '../utils/getHome.js';
+
+      // Jalankan setelah DOM selesai dimuat
+      document.addEventListener('DOMContentLoaded', () => {
+        const faviconLink = document.querySelector('link[rel="icon"]');
+
+        const HOME = getHome(); // Panggil getHome untuk mendapatkan base URL
+        if (faviconLink) {
+          faviconLink.setAttribute(
+            'href',
+            `${HOME}../../public/images/iconSmartActIcon.webp`
+          );
+          console.log('Favicon updated to:', faviconLink.href);
+        } else {
+          console.error('Favicon link not found!');
+        }
+
+        const stylesheetLink = document.querySelector('link[rel="stylesheet"]');
+
+        if (stylesheetLink) {
+          stylesheetLink.setAttribute('href', `${HOME}../../styles/output.css`);
+
+          console.log('Stylesheet updated to:', stylesheetLink.href);
+        } else {
+          console.error('Stylesheet link not found!');
+        }
+      });
+    </script>
   </head>
   <body class="relative bg-cover bg-fixed bg-center">
     <!-- Root Element -->

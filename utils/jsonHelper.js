@@ -205,3 +205,59 @@ export function writeJSONLocal(filePathOrData, data) {
     throw new Error('Unknown environment');
   }
 }
+
+/**
+ * Menghapus properti tertentu dari objek JSON.
+ * @param {Object} json - Objek JSON yang akan dimodifikasi.
+ * @param {string|string[]} keys - Nama properti atau array nama properti yang akan dihapus.
+ * @returns {Object} Objek JSON baru tanpa properti yang dihapus.
+ */
+export function removeJsonKeys(json, keys) {
+  if (!Array.isArray(keys)) {
+    keys = [keys];
+  }
+
+  return Object.fromEntries(
+    Object.entries(json).filter(([key]) => !keys.includes(key))
+  );
+}
+
+/**
+ * Membuat objek JSON dari objek input.
+ * @param {Object} input - Objek key-value.
+ * @returns {Object} Objek JSON yang sama.
+ */
+export function createJSONFromObject(input) {
+  if (typeof input !== 'object' || input === null) {
+    throw new Error('Input harus berupa objek.');
+  }
+  return { ...input };
+}
+
+/**
+ * Membuat objek JSON secara dinamis berdasarkan pasangan key-value.
+ * @param {...[string, any]} pairs - Array pasangan key-value berupa [key, value].
+ * @returns {Object} Objek JSON yang dihasilkan dari pasangan key-value.
+ * @throws {Error} Jika pasangan tidak valid (key bukan string atau tidak berpasangan).
+ */
+export function createDynamicJSON(...pairs) {
+  const result = {};
+
+  for (const pair of pairs) {
+    if (!Array.isArray(pair) || pair.length !== 2) {
+      throw new Error(
+        'Setiap pasangan harus berupa array dengan dua elemen: [key, value].'
+      );
+    }
+
+    const [key, value] = pair;
+
+    if (typeof key !== 'string') {
+      throw new Error('Key harus berupa string.');
+    }
+
+    result[key] = value;
+  }
+
+  return result;
+}

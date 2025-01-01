@@ -1,4 +1,4 @@
-import GLOBAL_ENV from './../config.dev.js';
+import GLOBAL_ENV from './../config.env.js';
 export default function HomeContent() {
   // Akses variabel environment
   const HOME = GLOBAL_ENV.HOME;

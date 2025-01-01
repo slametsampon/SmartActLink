@@ -1,10 +1,12 @@
 const GLOBAL_ENV = {
-  NODE_ENV: 'dev',
+  //ENV: 'production',
+  ENV: 'development',
   VER: '1.0.0',
   //HOME: '/',
   HOME: 'https://slametsampon.github.io/SmartActLink/',
-  //HOME: 'SmartActLink/',
-  APP_NAME: 'smartactlink',
+  LOCAL_HOME: '/',
+  GITHUB_HOME: 'https://slametsampon.github.io/SmartActLink/',
+  APP_NAME: 'SmartActLink',
   JSON_CONFIG_URL_GITHUB:
     'https://raw.githubusercontent.com/slametsampon/SmartActLink/refs/heads/main/data/configDevices.json',
   JSON_OPERATION_URL_GITHUB:
