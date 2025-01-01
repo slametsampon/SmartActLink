@@ -1,6 +1,6 @@
 const GLOBAL_ENV = {
-  //ENV: 'production',
-  ENV: 'development',
+  ENV: 'production',
+  //ENV: 'development',
   VER: '1.0.0',
   //HOME: '/',
   HOME: 'https://slametsampon.github.io/SmartActLink/',
