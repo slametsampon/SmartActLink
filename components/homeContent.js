@@ -1,7 +1,7 @@
-import GLOBAL_ENV from './../config.env.js';
+import getHome from '../utils/getHome.js';
 export default function HomeContent() {
   // Akses variabel environment
-  const HOME = GLOBAL_ENV.HOME;
+  const HOME = getHome();
   const main = document.createElement('main');
   main.className = 'flex-1 container mx-auto p-8 text-center pt-20';
 
