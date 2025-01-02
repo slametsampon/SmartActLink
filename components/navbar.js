@@ -5,7 +5,7 @@ export default function Navbar() {
   const HOME = getHome();
 
   // Contoh variabel status login (dapat diganti dengan logika yang sesuai)
-  const isLoggedIn = false; // Ganti dengan logika autentikasi sebenarnya
+  const isLoggedIn = true; // Ganti dengan logika autentikasi sebenarnya
   const userName = 'JohnDoe'; // Nama user yang login
 
   const navbar = document.createElement('nav');

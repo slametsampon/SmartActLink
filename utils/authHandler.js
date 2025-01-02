@@ -1,26 +1,5 @@
+import users from '../data/users.js';
 document.addEventListener('DOMContentLoaded', () => {
-  /**
-   * Simulasi database pengguna
-   * @type {Array<{username: string, passwordHash: string}>}
-   */
-  const users = [
-    {
-      username: 'admin',
-      passwordHash:
-        '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', // Hash untuk "password"
-    },
-    {
-      username: 'user',
-      passwordHash:
-        '65e84be33532fb784c48129675f9eff3a682b27168c0ea744b2cf58ee02337c5', // Hash untuk "qwerty"
-    },
-    {
-      username: 'tamu',
-      passwordHash:
-        '3b8cd3da133887e38bcdaf4f098c701567f6e4e8460197bf8537ced9c3507f7f', // Hash untuk "tamu123"
-    },
-  ];
-
   /**
    * Meng-hash password menggunakan algoritma SHA-256
    * @async
@@ -56,12 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return { success: false, message: 'Username not found' };
     }
 
-    console.log(user.passwordHash, hashedPassword);
     // Cocokkan password hash
     if (user.passwordHash !== hashedPassword) {
       return { success: false, message: 'Invalid password' };
     }
-
+    localStorage.setItem('loggedIn', 'true');
+    localStorage.setItem('username', user.username); // Atau nama pengguna sebenarnya
+    localStorage.setItem('role', user.role); // Simpan role pengguna
     return { success: true, message: 'Login successful' };
   }
 
