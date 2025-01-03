@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartActLink:Register</title>
+    <link href="./../../styles/output.css" rel="stylesheet" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./../../public/images/iconSmartActIcon.webp"
+    />
+    <script type="module">
+      import getHome from '../../utils/getHome.js';
+
+      // Jalankan setelah DOM selesai dimuat
+      document.addEventListener('DOMContentLoaded', () => {
+        const faviconLink = document.querySelector('link[rel="icon"]');
+
+        const HOME = getHome(); // Panggil getHome untuk mendapatkan base URL
+        if (faviconLink) {
+          faviconLink.setAttribute(
+            'href',
+            `${HOME}../../public/images/iconSmartActIcon.webp`
+          );
+          console.log('Favicon updated to:', faviconLink.href);
+        } else {
+          console.error('Favicon link not found!');
+        }
+
+        const stylesheetLink = document.querySelector('link[rel="stylesheet"]');
+
+        if (stylesheetLink) {
+          stylesheetLink.setAttribute('href', `${HOME}../../styles/output.css`);
+
+          console.log('Stylesheet updated to:', stylesheetLink.href);
+        } else {
+          console.error('Stylesheet link not found!');
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Root Element -->
+    <div id="app" class="flex flex-col min-h-full"></div>
+    <!-- JavaScript Files -->
+    <script type="module" src="./register.js"></script>
+    <script type="module" src="../../utils/authHandler.js"></script>
+  </body>
+</html>
