@@ -1,12 +1,18 @@
 import getHome from '../utils/getHome.js';
+import { getUserFromLocalStorage, logoutUser } from '../utils/userHelper.js';
 
 export default function Navbar() {
   // Akses variabel environment
   const HOME = getHome();
 
-  // Contoh variabel status login (dapat diganti dengan logika yang sesuai)
-  const isLoggedIn = true; // Ganti dengan logika autentikasi sebenarnya
-  const userName = 'JohnDoe'; // Nama user yang login
+  const user = getUserFromLocalStorage();
+  let isLoggedIn = false; // Ganti dengan logika autentikasi sebenarnya
+  let userName = '-'; // Nama user yang login
+  if (user !== null) {
+    console.log('user : ', user);
+    isLoggedIn = true; // Ganti dengan logika autentikasi sebenarnya
+    userName = user.username; // Nama user yang login
+  }
 
   const navbar = document.createElement('nav');
   navbar.className =
@@ -83,7 +89,7 @@ export default function Navbar() {
           </button>
           <div id="user-menu" class="hidden absolute right-0 mt-2 w-30 bg-white text-gray-800 shadow-lg rounded-md">
             <a href="${HOME}pages/profile" class="block px-4 py-2 hover:bg-gray-200">Profile</a>
-            <a href="${HOME}logout" class="block px-4 py-2 hover:bg-gray-200">Logout</a>
+            <button id="logoutButton"" class="block px-4 py-2 hover:bg-gray-200">Logout</a>
           </div>
         `
             : `
@@ -94,8 +100,8 @@ export default function Navbar() {
             </div>
           </button>
           <div id="user-menu-logout" class="hidden absolute right-0 mt-2 w-30 bg-white text-gray-800 shadow-lg rounded-md">
-            <a href="${HOME}pages/auth/login" class="block px-4 py-2 hover:bg-gray-200">Login</a>
-            <a href="${HOME}pages/auth/register" class="block px-4 py-2 hover:bg-gray-200">Register</a>
+            <a href="${HOME}pages/auth/login.html" class="block px-4 py-2 hover:bg-gray-200">Login</a>
+            <a href="${HOME}pages/auth/register.html" class="block px-4 py-2 hover:bg-gray-200">Register</a>
           </div>
         `
         }
@@ -107,9 +113,14 @@ export default function Navbar() {
   if (isLoggedIn) {
     const userMenuButton = navbar.querySelector('#user-menu-button');
     const userMenu = navbar.querySelector('#user-menu');
+    const logoutButton = navbar.querySelector('#logoutButton');
 
     userMenuButton.addEventListener('click', () => {
       userMenu.classList.toggle('hidden');
+    });
+
+    logoutButton.addEventListener('click', () => {
+      logoutUser();
     });
   } else {
     const userMenuLogout = navbar.querySelector('#user-menu-logout');

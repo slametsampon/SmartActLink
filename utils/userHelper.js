@@ -1,3 +1,4 @@
+import getHome from './getHome.js';
 /**
  * Menyimpan data pengguna ke localStorage.
  * @param {Object} user - Objek data pengguna.
@@ -79,7 +80,7 @@ function hasRole(requiredRole) {
 function logoutUser() {
   removeUserFromLocalStorage();
   alert('You have been logged out.');
-  window.location.href = 'index.html'; // Redirect ke halaman login
+  window.location.href = `${getHome()}`; // Redirect ke halaman login
 }
 
 /**

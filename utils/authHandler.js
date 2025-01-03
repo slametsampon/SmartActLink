@@ -1,3 +1,5 @@
+import { saveUserToLocalStorage } from './userHelper.js';
+import getHome from './getHome.js';
 import users from '../data/users.js';
 document.addEventListener('DOMContentLoaded', () => {
   /**
@@ -39,9 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (user.passwordHash !== hashedPassword) {
       return { success: false, message: 'Invalid password' };
     }
-    localStorage.setItem('loggedIn', 'true');
-    localStorage.setItem('username', user.username); // Atau nama pengguna sebenarnya
-    localStorage.setItem('role', user.role); // Simpan role pengguna
+    saveUserToLocalStorage(user);
     return { success: true, message: 'Login successful' };
   }
 
@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       status.classList.remove('text-red-500');
       status.classList.add('text-green-500');
       alert(`Welcome, ${username}!`);
+      window.location.href = `${getHome()}`; // Redirect ke halaman login
     } else {
       status.classList.remove('text-green-500');
       status.classList.add('text-red-500');
