@@ -1,12 +1,14 @@
 import getHome from '../utils/getHome.js';
 import { getUserFromLocalStorage, logoutUser } from '../utils/userHelper.js';
 
-export default function Navbar() {
+export default function Navbar(currentPage) {
+  console.log('currentPage : ', currentPage);
+
   // Akses variabel environment
   const HOME = getHome();
 
   const user = getUserFromLocalStorage();
-  let isLoggedIn = false; // Ganti dengan logika autentikasi sebenarnya
+  let isLoggedIn = false;
   let userName = '-'; // Nama user yang login
   if (user !== null) {
     console.log('user : ', user);
