@@ -1,8 +1,8 @@
 import getHome from '../utils/getHome.js';
 import { getUserFromLocalStorage, logoutUser } from '../utils/userHelper.js';
 
-export default function Navbar(currentPage) {
-  console.log('currentPage : ', currentPage);
+export default function Navbar(currentPath) {
+  console.log('currentPath : ', currentPath);
 
   // Akses variabel environment
   const HOME = getHome();
@@ -15,7 +15,15 @@ export default function Navbar(currentPage) {
     isLoggedIn = true; // Ganti dengan logika autentikasi sebenarnya
     userName = user.username; // Nama user yang login
   }
-
+  // Definisikan rute menu
+  const routes = [
+    { path: `pages/dashboard`, label: 'Dashboard' },
+    { path: `pages/devices`, label: 'Devices' },
+    { path: `pages/config`, label: 'Config' },
+    { path: `pages/history`, label: 'History' },
+    { path: `pages/help`, label: 'Help' },
+    { path: `pages/about`, label: 'About' },
+  ];
   const navbar = document.createElement('nav');
   navbar.className =
     'container px-3 mx-auto flex justify-between items-center bg-blue-600 text-white shadow-md fixed top-0 left-0 min-w-full';
@@ -58,24 +66,22 @@ export default function Navbar(currentPage) {
           id="menu"
           class="hidden mr-2 px-3 space-y-2 py-3 flex-col text-blue-600 bg-green-100 absolute top-11 right-0 sm:bg-blue-600 sm:text-white rounded-md sm:static sm:flex sm:flex-row sm:space-y-0 sm:space-x-8 sm:min-w-fit sm:mr-6 min-w-max"
         >
-          <li>
-            <a href="${HOME}pages/dashboard" class="hover:text-orange-600">Dashboard</a>
-          </li>
-          <li>
-            <a href="${HOME}pages/devices" class="hover:text-orange-600">Devices</a>
-          </li>
-          <li>
-            <a href="${HOME}pages/config" class="hover:text-orange-600">Config</a>
-          </li>
-          <li>
-            <a href="${HOME}pages/history" class="hover:text-orange-600">History</a>
-          </li>
-          <li>
-            <a href="${HOME}pages/help" class="hover:text-orange-600">Help</a>
-          </li>
-          <li>
-            <a href="${HOME}pages/about" class="hover:text-orange-600">About</a>
-          </li>
+          ${routes
+            .map(
+              (route) => `
+              <li>
+                <a 
+                  href="${HOME}${route.path}" 
+                  class="hover:text-orange-600 ${
+                    route.path === currentPath ? 'active' : 'normal'
+                  }"
+                >
+                  ${route.label}
+                </a>
+              </li>
+            `
+            )
+            .join('')}
         </ul>
       </div>
       <!-- User Section -->

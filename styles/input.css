@@ -12,3 +12,16 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+/* Tambahkan gaya untuk navbar */
+.active {
+  @apply font-bold bg-green-700 text-orange-500 border-b-2 border-orange-500;
+}
+
+.normal {
+  @apply text-inherit;
+}
+
+.chart-container {
+  @apply flex justify-center items-center m-5 border border-gray-300 rounded-lg p-2.5 bg-gray-100;
+}

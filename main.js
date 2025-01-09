@@ -4,15 +4,15 @@ import Footer from './components/footer.js';
 import NavbarControl from './components/navbarControl.js';
 import ModalDialogFrame from './components/modalDialogFrame.js';
 import ModalDialogFitur from './components/modalDialogFitur.js';
-import getCurrentPage from './utils/getCurrentPage.js';
+import getCurrentPath from './utils/getCurrentPath.js';
 
 function App() {
   const app = document.getElementById('app');
   // Mendapatkan URL halaman saat ini
-  const currentPage = getCurrentPage();
+  const currentPath = getCurrentPath();
 
   // Buat dan tambahkan komponen
-  const navbar = Navbar(currentPage);
+  const navbar = Navbar(currentPath);
   const homeContent = HomeContent();
   const footer = Footer();
 
