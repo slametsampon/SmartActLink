@@ -15,7 +15,7 @@ body {
 
 /* Tambahkan gaya untuk navbar */
 .active {
-  @apply font-bold bg-green-700 text-orange-500 border-b-2 border-orange-500;
+  @apply font-bold text-orange-500 border-b-2 border-orange-500;
 }
 
 .normal {

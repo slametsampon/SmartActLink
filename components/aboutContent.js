@@ -28,7 +28,7 @@ export default function AboutContent() {
           <li>Auto-Registrasi Cerdas</li>
         </ul>
       </section>
-      <section class="p-3 rounded-xl bg-gray-50 mt-6 text-left">
+      <section class="p-3 rounded-xl bg-gray-50 mt-6 mb-14 pb-3 text-left">
         <h2 class="text-2xl font-semibold">Aplikasi Smart<span class="font-bold italic text-orange-600">Act</span>Link</h2>
         <ul class="mt-6 space-y-2">
           <li><b>Hortikultura:</b> Kendali irigasi, pencahayaan, dan pemupukan</li>

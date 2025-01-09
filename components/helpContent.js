@@ -34,7 +34,7 @@ export default function HelpContent() {
                 </div>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-white p-6 mb-8 rounded-lg shadow-md">
                 <h2 class="text-2xl font-semibold">Dukungan Teknis</h2>
                 <button onclick="alert('Kontak Tim Dukungan')" class="mt-4 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Hubungi Kami</button>
             </div>

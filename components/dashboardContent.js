@@ -27,7 +27,7 @@ export default async function DashboardContent() {
 
   const wrapperLogActivity = document.createElement('div');
   wrapperLogActivity.className =
-    'bg-white shadow-md rounded-lg p-3 col-span-1 md:col-span-2';
+    'bg-white shadow-md mb-8 rounded-lg p-3 col-span-1 md:col-span-2';
   wrapperLogActivity.appendChild(LogActivity(logData, 'Log Aktivitas'));
 
   mainContent.appendChild(wrapperDevicesInfo);
