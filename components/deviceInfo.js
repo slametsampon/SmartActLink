@@ -1,4 +1,4 @@
-import getArrayJson from '../utils/getArrayJson.js';
+import { getArrayJson } from '../utils/jsonHelper.js';
 import CardJson from './cardJson.js';
 import OperationDevicesLocal from '../data/operationDevicesLocal.js';
 import isEmptyObject from '../utils/isEmptyObject.js';

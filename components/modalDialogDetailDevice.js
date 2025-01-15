@@ -1,5 +1,5 @@
 import summaryDevices from '../utils/summaryDevices.js';
-import getArrayJson from '../utils/getArrayJson.js';
+import { getArrayJson } from '../utils/jsonHelper.js';
 import ConfigDevicesLocal from '../data/configDevicesLocal.js';
 import CardJson from './cardJson.js';
 import ModalDialogControl from './modalDialogControl.js';
