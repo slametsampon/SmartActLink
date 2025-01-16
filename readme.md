@@ -162,7 +162,7 @@ Berikut adalah **struktur proyek berbasis HTML, Tailwind CSS, dan Vanilla JavaSc
 │       └── allImages      → Seluruh file gambar termasuk logo
 │
 ├── /components                   → Komponen UI berbasis CDD
-│   ├── responsive-Navbar.js      → Komponen Navbar-responsive
+│   ├── navbar.js                 → Komponen Navbar-responsive
 │   ├── homeContent.js            → Komponen Home
 │   ├── dashboardContent.js       → Komponen Dashboard
 │   ├── devicesContent.js         → Komponen Perangkat
