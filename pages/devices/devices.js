@@ -3,7 +3,7 @@ import Footer from '../../components/footer.js';
 import Navbar from '../../components/navbar.js';
 import NavbarControl from '../../components/navbarControl.js';
 import ModalDialogFrame from '../../components/modalDialogFrame.js';
-import ModalDialogDetailDevice from '../../components/modalDialogDetailDevice.js';
+import DeviceList from '../../components/deviceList.js';
 import getCurrentPath from '../../utils/getCurrentPath.js';
 
 function App() {
@@ -25,5 +25,5 @@ function App() {
 document.addEventListener('DOMContentLoaded', async () => {
   App();
   ModalDialogFrame();
-  await ModalDialogDetailDevice();
+  await DeviceList();
 });

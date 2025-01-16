@@ -1,23 +1,19 @@
 import ModalDialogControl from './modalDialogControl.js';
 import getFiturDetail from '../utils/getFiturDetail.js';
 import CardDetailContent from './cardDetailContent.js';
-export default function ModalDialogFitur() {
+export default function FiturList() {
   // Inisialisasi kontrol modal
   const { openModal } = ModalDialogControl();
 
   // Tombol untuk membuka modal
   const openModalMandiriButton = document.getElementById('openModalMandiri');
   if (!openModalMandiriButton) {
-    console.error(
-      'modalDialogFitur.js: Tombol "openModalMandiri" tidak ditemukan.'
-    );
+    console.error('fiturList.js: Tombol "openModalMandiri" tidak ditemukan.');
     return;
   }
   const openModalAksesHPButton = document.getElementById('openModalAksesHP');
   if (!openModalAksesHPButton) {
-    console.error(
-      'modalDialogFitur.js: Tombol "openModalAksesHP" tidak ditemukan.'
-    );
+    console.error('fiturList.js: Tombol "openModalAksesHP" tidak ditemukan.');
     return;
   }
   const openModalKompatibelButton = document.getElementById(
@@ -25,7 +21,7 @@ export default function ModalDialogFitur() {
   );
   if (!openModalKompatibelButton) {
     console.error(
-      'modalDialogFitur.js: Tombol "openModalKompatibel" tidak ditemukan.'
+      'fiturList.js: Tombol "openModalKompatibel" tidak ditemukan.'
     );
     return;
   }
@@ -35,7 +31,7 @@ export default function ModalDialogFitur() {
     const fitur = event.currentTarget.getAttribute('data-fitur');
     if (!fitur) {
       console.warn(
-        'modalDialogFitur.js: Atribut "data-fitur" tidak ditemukan pada tombol.'
+        'fiturList.js: Atribut "data-fitur" tidak ditemukan pada tombol.'
       );
       return;
     }
@@ -51,7 +47,7 @@ export default function ModalDialogFitur() {
     const fitur = event.currentTarget.getAttribute('data-fitur');
     if (!fitur) {
       console.warn(
-        'modalDialogFitur.js: Atribut "data-fitur" tidak ditemukan pada tombol.'
+        'fiturList.js: Atribut "data-fitur" tidak ditemukan pada tombol.'
       );
       return;
     }
@@ -67,7 +63,7 @@ export default function ModalDialogFitur() {
     const fitur = event.currentTarget.getAttribute('data-fitur');
     if (!fitur) {
       console.warn(
-        'modalDialogFitur.js: Atribut "data-fitur" tidak ditemukan pada tombol.'
+        'fiturList.js: Atribut "data-fitur" tidak ditemukan pada tombol.'
       );
       return;
     }

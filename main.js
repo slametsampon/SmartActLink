@@ -3,7 +3,7 @@ import HomeContent from './components/homeContent.js';
 import Footer from './components/footer.js';
 import NavbarControl from './components/navbarControl.js';
 import ModalDialogFrame from './components/modalDialogFrame.js';
-import ModalDialogFitur from './components/modalDialogFitur.js';
+import FiturList from './components/fiturList.js';
 import getCurrentPath from './utils/getCurrentPath.js';
 
 function App() {
@@ -26,5 +26,5 @@ function App() {
 document.addEventListener('DOMContentLoaded', () => {
   App();
   ModalDialogFrame();
-  ModalDialogFitur();
+  FiturList();
 });

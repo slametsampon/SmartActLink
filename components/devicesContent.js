@@ -21,7 +21,7 @@ export default function DevicesContent() {
           <th class="p-4">Aksi</th>
         </tr>
       </thead>
-      <tbody id="deviceList"></tbody>
+      <tbody id="deviceListId"></tbody>
     </table>
     
     <!-- Modal -->

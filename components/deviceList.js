@@ -3,17 +3,17 @@ import { getArrayJson } from '../utils/jsonHelper.js';
 import ConfigDevicesLocal from '../data/configDevicesLocal.js';
 import CardJson from './cardJson.js';
 import ModalDialogControl from './modalDialogControl.js';
-export default async function ModalDialogDetailDevice() {
+export default async function DeviceList() {
   // Inisialisasi kontrol modal
   const { openModal } = ModalDialogControl();
   const devices = await summaryDevices();
-  const deviceList = document.getElementById('deviceList');
+  const deviceListId = document.getElementById('deviceListId');
   const search = document.getElementById('search');
   const addDevice = document.getElementById('addDevice');
 
   // Render Device List
   const renderDevices = (filter = '') => {
-    deviceList.innerHTML = devices
+    deviceListId.innerHTML = devices
       .filter((d) => d.tagname.toLowerCase().includes(filter.toLowerCase()))
       .map(
         (device) => `
