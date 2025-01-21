@@ -22,25 +22,14 @@
     - [**5. Tailwind CSS**](#5-tailwind-css)
     - [**6. Gabungan Skrip untuk Workflow Full Development**](#6-gabungan-skrip-untuk-workflow-full-development)
   - [**Rangkuman Workflow dalam Bentuk Tabel**](#rangkuman-workflow-dalam-bentuk-tabel)
-  - [**Kesimpulan**](#kesimpulan)
 - [**3. Mekanisme Routing**](#3-mekanisme-routing)
   - [**1. Konsep Dasar Routing**](#1-konsep-dasar-routing)
   - [**2. Isi File `router.ts`**](#2-isi-file-routerts)
-    - [**`src/router.ts`:**](#srcrouterts)
   - [**3. Cara Menggunakan `Router`**](#3-cara-menggunakan-router)
-    - [**Contoh di `index.ts`:**](#contoh-di-indexts)
   - [**4. Penjelasan Implementasi**](#4-penjelasan-implementasi)
-    - [**a. Struktur Class Router**](#a-struktur-class-router)
-    - [**b. Bagaimana Hash-Based Routing Bekerja**](#b-bagaimana-hash-based-routing-bekerja)
   - [**5. Kelebihan dan Kekurangan Router Custom**](#5-kelebihan-dan-kekurangan-router-custom)
-    - [**Kelebihan:**](#kelebihan)
-    - [**Kekurangan:**](#kekurangan)
   - [**6. Menambahkan Fitur Tambahan**](#6-menambahkan-fitur-tambahan)
   - [**7. Penjelasan Baris per Baris addRoute**](#7-penjelasan-baris-per-baris-addroute)
-    - [**1. Parameter `path: string`**](#1-parameter-path-string)
-    - [**2. Parameter `callback: () => void`**](#2-parameter-callback---void)
-    - [**3. `this.routes[path] = callback`**](#3-thisroutespath--callback)
-    - [**4. Tipe Return `void`**](#4-tipe-return-void)
   - [**8. Ilustrasi Penyimpanan dalam `this.routes`**](#8-ilustrasi-penyimpanan-dalam-thisroutes)
   - [**9. Contoh Penggunaan**](#9-contoh-penggunaan)
   - [**10. Cara Router Menemukan Rute**](#10-cara-router-menemukan-rute)
@@ -50,17 +39,12 @@
   - [**b. Hosting Demo (GitHub Pages)**](#b-hosting-demo-github-pages)
   - [**c. Hosting Produksi (ESP32-C3)**](#c-hosting-produksi-esp32-c3)
   - [**Alternatif File `scripts/upload-to-esp32.js`**](#alternatif-file-scriptsupload-to-esp32js)
-    - [**1. Tujuan File `upload-to-esp32.js`**](#1-tujuan-file-upload-to-esp32js)
-    - [**2. Persyaratan**](#2-persyaratan)
-    - [**3. Contoh File `upload-to-esp32.js`**](#3-contoh-file-upload-to-esp32js)
-      - [**Menggunakan Arduino CLI**](#menggunakan-arduino-cli)
-    - [**4. Menggunakan ESPTool dan LittleFS Uploader**](#4-menggunakan-esptool-dan-littlefs-uploader)
-      - [**Install Library Tambahan**](#install-library-tambahan)
-      - [**Skrip Upload**](#skrip-upload)
-    - [**5. Integrasi dengan Skrip `npm run deploy:esp32`**](#5-integrasi-dengan-skrip-npm-run-deployesp32)
-    - [**6. Cara Menjalankan**](#6-cara-menjalankan)
-    - [**Kesimpulan**](#kesimpulan-1)
+    - [**1. Menggunakan Arduino CLI**](#1-menggunakan-arduino-cli)
+    - [**2. Menggunakan ESPTool dan LittleFS Uploader**](#2-menggunakan-esptool-dan-littlefs-uploader)
+    - [**3. Integrasi Skrip di `package.json`**](#3-integrasi-skrip-di-packagejson)
 - [**5. Tailwind CSS**](#5-tailwind-css-1)
+  - [**1. Konfigurasi `tailwind.config.js`**](#1-konfigurasi-tailwindconfigjs)
+  - [**2. Menjalankan Tailwind CSS**](#2-menjalankan-tailwind-css)
 - [**6. Lebih Detail terkait esbuild**](#6-lebih-detail-terkait-esbuild)
   - [**1. Perintah Dasar esbuild**](#1-perintah-dasar-esbuild)
   - [**2. Opsi-Opsi Penting esbuild**](#2-opsi-opsi-penting-esbuild)
@@ -91,15 +75,15 @@
     - [**Strategi Pengembangan:**](#strategi-pengembangan)
     - [**Struktur Folder:**](#struktur-folder)
     - [**Cara Kerja:**](#cara-kerja)
-    - [**Kelebihan:**](#kelebihan-1)
-    - [**Kekurangan:**](#kekurangan-1)
+    - [**Kelebihan:**](#kelebihan)
+    - [**Kekurangan:**](#kekurangan)
   - [**2. `entryPoints: ["src/index.html"]`**](#2-entrypoints-srcindexhtml)
     - [**Strategi Pengembangan:**](#strategi-pengembangan-1)
     - [**Struktur Folder:**](#struktur-folder-1)
     - [**Cara Kerja:**](#cara-kerja-1)
     - [**Contoh `index.html`:**](#contoh-indexhtml)
-    - [**Kelebihan:**](#kelebihan-2)
-    - [**Kekurangan:**](#kekurangan-2)
+    - [**Kelebihan:**](#kelebihan-1)
+    - [**Kekurangan:**](#kekurangan-1)
     - [**1. Penyesuaian Struktur Folder**](#1-penyesuaian-struktur-folder)
     - [**2. Isi File `index.ts`**](#2-isi-file-indexts)
       - [**Contoh Isi `index.ts`:**](#contoh-isi-indexts)
@@ -286,11 +270,17 @@ Untuk memastikan semua skrip bekerja di Windows, gunakan pendekatan berikut:
 
 #### **Workflow Skrip dan Penjelasannya**
 
+Agar proses pengembangan dan deployment aplikasi SPA menjadi lebih terstruktur, kita menggunakan berbagai skrip dalam `package.json`. Setiap workflow memiliki tujuan yang spesifik, mulai dari development di lokal, pembuatan build untuk pre-release (demo di GitHub Pages), hingga deployment ke perangkat ESP32-C3. Penjelasan di bawah ini mencakup tujuan setiap workflow, cara menjalankannya, dan langkah-langkah teknis yang terlibat.
+
+---
+
 ##### **1. Development**
 
-- **Tujuan:**  
-  Workflow ini digunakan untuk proses pengembangan di lingkungan lokal.  
-  Tailwind CSS akan dimonitor untuk setiap perubahan kelas, dan server lokal akan berjalan untuk melihat hasilnya di browser.
+**Tujuan:**  
+Workflow ini dirancang untuk mempermudah proses pengembangan di lingkungan lokal. Skrip ini memungkinkan Anda:
+
+- **Memantau perubahan Tailwind CSS:** Setiap perubahan kelas CSS akan diterapkan secara real-time.
+- **Menjalankan server lokal:** Anda dapat langsung melihat perubahan aplikasi di browser melalui server lokal di `http://localhost:8080`.
 
 **Skrip:**
 
@@ -302,15 +292,24 @@ Untuk memastikan semua skrip bekerja di Windows, gunakan pendekatan berikut:
 
 **Cara Kerja:**
 
-1. Jalankan `npm run tailwind:watch` untuk memonitor perubahan CSS.
-2. Jalankan `npm run dev` untuk membuild aplikasi dengan esbuild (development mode) dan menyajikannya melalui server lokal (`http://localhost:8080`).
+1. Jalankan **`npm run tailwind:watch`** untuk memantau perubahan CSS.
+2. Jalankan **`npm run dev`** untuk membuild aplikasi dengan mode development menggunakan **esbuild** dan menyajikannya melalui server lokal.
+3. Server dapat diakses melalui `http://localhost:8080`.
+
+**Catatan Tambahan:**
+
+- Mode development akan menghasilkan sourcemap untuk debugging yang lebih mudah.
+- File CSS di-update secara otomatis dengan Tailwind CLI dalam mode watch.
 
 ---
 
 ##### **2. Pre-release**
 
-- **Tujuan:**  
-  Workflow ini digunakan untuk membuat **build pre-release** yang akan dideploy ke **GitHub Pages** sebagai demo atau testing aplikasi.
+**Tujuan:**  
+Workflow ini bertujuan untuk menghasilkan build pre-release yang akan digunakan untuk testing atau demo di GitHub Pages. Dalam tahap ini:
+
+- Build disiapkan dengan konfigurasi khusus untuk **hosting di subdirektori** (GitHub Pages).
+- Anda dapat mengunggah hasil build langsung ke branch `gh-pages`.
 
 **Skrip:**
 
@@ -321,15 +320,25 @@ Untuk memastikan semua skrip bekerja di Windows, gunakan pendekatan berikut:
 
 **Cara Kerja:**
 
-1. Jalankan `npm run pre-release` untuk membuild aplikasi dengan path `/smartsenselink` (GitHub Pages).
-2. Deploy hasil build ke GitHub Pages menggunakan `npm run deploy:github`.
+1. Jalankan **`npm run pre-release`** untuk membuild aplikasi dengan `publicPath: "/smartsenselink"` yang cocok untuk subdirektori di GitHub Pages.
+2. Gunakan **`npm run deploy:github`** untuk mengunggah folder `dist` ke branch `gh-pages`.
+
+**Catatan Tambahan:**
+
+- Setelah deploy, aplikasi demo dapat diakses melalui URL:
+  ```
+  https://username.github.io/smartsenselink
+  ```
 
 ---
 
 ##### **3. Production**
 
-- **Tujuan:**  
-  Workflow ini digunakan untuk membuat build final yang akan dihosting di **ESP32-C3**.
+**Tujuan:**  
+Workflow ini digunakan untuk membuat build final yang akan dihosting di perangkat IoT **ESP32-C3**. Build ini dioptimalkan untuk performa terbaik dengan:
+
+- Minifikasi file.
+- Konfigurasi tanpa path tambahan (untuk root direktori).
 
 **Skrip:**
 
@@ -341,15 +350,20 @@ Untuk memastikan semua skrip bekerja di Windows, gunakan pendekatan berikut:
 
 **Cara Kerja:**
 
-1. Jalankan `npm run build:production` untuk membuild aplikasi tanpa path khusus (untuk root direktori).
-2. Jalankan `npm run deploy:esp32` untuk mengunggah hasil build ke ESP32-C3 menggunakan `upload-to-esp32.js`.
+1. Jalankan **`npm run build:production`** untuk membuild aplikasi dengan path root.
+2. Jalankan **`npm run deploy:esp32`** untuk mengunggah hasil build ke ESP32-C3 menggunakan skrip `upload-to-esp32.js`.
+
+**Catatan Tambahan:**
+
+- Pastikan perangkat ESP32-C3 sudah terhubung ke komputer dengan port USB yang sesuai.
+- Skrip `upload-to-esp32.js` bertanggung jawab untuk mengunggah file ke sistem file ESP32 (LittleFS atau SPIFFS).
 
 ---
 
 ##### **4. Utility**
 
-- **Tujuan:**  
-  Skrip ini digunakan untuk membersihkan direktori `dist` sebelum membuat build baru atau untuk keperluan debugging.
+**Tujuan:**  
+Skrip ini digunakan untuk membersihkan folder `dist` sebelum membuat build baru. Dengan ini, Anda dapat memastikan file hasil build sebelumnya tidak tercampur dengan file baru.
 
 **Skrip:**
 
@@ -359,7 +373,12 @@ Untuk memastikan semua skrip bekerja di Windows, gunakan pendekatan berikut:
 
 **Cara Kerja:**
 
-1. Jalankan `npm run clean` untuk menghapus folder `dist` dan memastikan build baru bebas dari file lama.
+1. Jalankan **`npm run clean`** untuk menghapus folder `dist`.
+2. Folder `dist` akan dibuat ulang saat Anda menjalankan salah satu workflow build.
+
+**Catatan Tambahan:**
+
+- Gunakan skrip ini sebelum setiap build jika ada perubahan besar pada konfigurasi.
 
 ---
 
@@ -416,35 +435,39 @@ Untuk memastikan semua skrip bekerja di Windows, gunakan pendekatan berikut:
 
 ---
 
-#### **Kesimpulan**
+### **3. Mekanisme Routing**
 
-Workflow ini dirancang untuk memenuhi kebutuhan:
-
-1. **Development Lokal:** Jalankan `npm run dev:full` untuk pengembangan lengkap.
-2. **Pre-release:** Jalankan `npm run deploy:github` untuk menyiapkan demo di GitHub Pages.
-3. **Production:** Jalankan `npm run deploy:esp32` untuk deploy ke ESP32-C3.
-4. **Pembersihan:** Gunakan `npm run clean` sebelum build baru.
+Aplikasi **Single Page Application (SPA)** membutuhkan mekanisme routing yang efisien untuk berpindah antar halaman tanpa memuat ulang dokumen. Dalam proyek ini, routing dilakukan tanpa library eksternal, memanfaatkan pendekatan **hash-based routing** dan JavaScript murni. Sub-bab berikut akan menjelaskan konsep dasar routing, implementasi custom router, dan cara penggunaannya.
 
 ---
 
-### **3. Mekanisme Routing**
-
 #### **1. Konsep Dasar Routing**
 
-- **Tidank menggunakan eksternal Library:** Tidak menggunakan library router eksternal, kita dapat membuat router custom menggunakan JavaScript sederhana..
-- **Single HTML File:** Semua halaman disajikan dalam satu file HTML (`index.html`).
-- **Hash-based Routing:** Digunakan untuk memastikan rute berfungsi di semua hosting (lokal, GitHub Pages, ESP32-C3).
-- **Dynamic Content Rendering:** JavaScript akan menangani perubahan konten berdasarkan hash.
+**Routing Tanpa Library Eksternal:**  
+Routing dilakukan menggunakan JavaScript sederhana tanpa library pihak ketiga, menjaga ukuran aplikasi tetap ringan.
+
+**Single HTML File:**  
+Semua halaman disajikan dalam satu file HTML utama (`index.html`). Halaman lainnya di-render secara dinamis menggunakan JavaScript.
+
+**Hash-based Routing:**  
+Bagian hash (`#`) dalam URL digunakan untuk menentukan halaman yang diakses. Ini kompatibel dengan berbagai hosting, termasuk **lokal**, **GitHub Pages**, dan **ESP32-C3**.
+
+**Dynamic Content Rendering:**  
+JavaScript menangani pembaruan konten halaman berdasarkan perubahan hash. Komponen halaman (seperti header, konten utama, dan footer) dirender ulang sesuai rute yang diakses.
+
+---
 
 #### **2. Isi File `router.ts`**
 
-File ini akan menangani:
+File `router.ts` bertugas mengelola sistem routing dalam aplikasi. Dengan pendekatan custom, file ini menyediakan:
 
-- **Penambahan Rute:** Menyimpan daftar rute (path) dan fungsi callback yang akan dijalankan saat rute diakses.
-- **Perubahan Rute:** Memantau perubahan hash (`#`) pada URL.
-- **Inisialisasi Router:** Memastikan rute yang sesuai dijalankan saat halaman dimuat atau saat hash berubah.
+1. **Penambahan Rute:** Mendaftarkan pasangan path dan fungsi callback.
+2. **Perubahan Rute:** Memantau perubahan hash (`hashchange`) pada URL.
+3. **Inisialisasi Router:** Menjalankan rute yang sesuai saat halaman pertama kali dimuat atau hash berubah.
 
-##### **`src/router.ts`:**
+---
+
+**`src/router.ts`:**
 
 ```typescript
 export default class Router {
@@ -479,7 +502,7 @@ export default class Router {
 
 Setelah Anda membuat `router.ts`, Anda dapat menggunakannya di file `index.ts` untuk mengatur rute aplikasi Anda.
 
-##### **Contoh di `index.ts`:**
+**Contoh di `index.ts`:**
 
 ```typescript
 import Router from './router';
@@ -522,7 +545,21 @@ router.init();
 
 #### **4. Penjelasan Implementasi**
 
-##### **a. Struktur Class Router**
+**Struktur Class Router:**
+
+- **`routes`:** Menyimpan daftar rute.
+- **`addRoute`:** Menambahkan rute baru dengan path dan callback.
+- **`handleRoute`:** Menangani perubahan hash dan menjalankan callback yang sesuai.
+- **`init`:** Menginisialisasi router, mendengarkan event `hashchange` dan `load`.
+
+**Bagaimana Hash-Based Routing Bekerja:**
+
+- Browser mendeteksi perubahan hash (`#`) tanpa memuat ulang dokumen.
+- Router memproses path hash dan memanggil callback yang telah didefinisikan untuk rute tersebut.
+
+---
+
+**a. Struktur Class Router**
 
 - **`routes`:** Objek yang menyimpan pasangan path (string) dan callback (fungsi) untuk setiap rute.
   ```typescript
@@ -546,6 +583,7 @@ router.init();
   }
   ```
 - **`init`:** Memulai router dengan mendengarkan event `hashchange` dan `load`.
+
   ```typescript
   init(): void {
     window.addEventListener("hashchange", () => this.handleRoute());
@@ -553,7 +591,7 @@ router.init();
   }
   ```
 
-##### **b. Bagaimana Hash-Based Routing Bekerja**
+  **b. Bagaimana Hash-Based Routing Bekerja**
 
 - Ketika URL berubah, browser tidak mengirimkan bagian setelah hash (`#`) ke server.
 - Router mendeteksi perubahan hash (`hashchange`) dan memanggil callback untuk path yang sesuai.
@@ -562,7 +600,7 @@ router.init();
 
 #### **5. Kelebihan dan Kekurangan Router Custom**
 
-##### **Kelebihan:**
+**Kelebihan:**
 
 1. **Sederhana dan Ringan:**
    - Tidak memerlukan dependensi eksternal.
@@ -570,7 +608,7 @@ router.init();
 2. **Mudah Dikustomisasi:**
    - Anda bisa menambahkan fitur tambahan sesuai kebutuhan.
 
-##### **Kekurangan:**
+**Kekurangan:**
 
 1. **Kurang Fitur:**
    - Tidak memiliki fitur canggih seperti nested routes atau lazy loading.
@@ -581,9 +619,12 @@ router.init();
 
 #### **6. Menambahkan Fitur Tambahan**
 
-Jika Anda ingin memperluas kemampuan router, Anda bisa menambahkan fitur seperti:
+Routing custom ini dapat diperluas dengan fitur-fitur seperti:
 
-1. **404 Page (Fallback Route):**
+**404 Page:** Callback default untuk rute yang tidak ditemukan.
+**Routing Dinamis:** Parsing parameter dari path (misalnya, `/user/:id`).
+
+2. **404 Page (Fallback Route):**
 
    - Jalankan callback default jika path tidak ditemukan:
      ```typescript
@@ -597,7 +638,7 @@ Jika Anda ingin memperluas kemampuan router, Anda bisa menambahkan fitur seperti
      }
      ```
 
-2. **Routing Dinamis:**
+3. **Routing Dinamis:**
    - Untuk path dengan parameter (misalnya `/user/:id`), Anda bisa menambahkan parsing parameter:
      ```typescript
      // Tambahkan parameter parsing ke callback
@@ -618,30 +659,33 @@ addRoute(path: string, callback: () => void): void {
 }
 ```
 
-##### **1. Parameter `path: string`**
+**1. Parameter `path: string`**
 
 - **`path`** adalah parameter bertipe string yang menentukan nama rute yang ingin Anda tambahkan.
 - Contoh nilai `path`:
+
   - `/` → Halaman Home
   - `/about` → Halaman About
   - `/help` → Halaman Help
 
-##### **2. Parameter `callback: () => void`**
+  **2. Parameter `callback: () => void`**
 
 - **`callback`** adalah fungsi yang akan dipanggil saat pengguna mengakses rute yang sesuai (berdasarkan path).
 - Callback ini menentukan apa yang akan dilakukan oleh aplikasi Anda, misalnya:
+
   - Merender konten halaman.
   - Mengubah elemen HTML.
   - Memanggil fungsi lain.
 
-##### **3. `this.routes[path] = callback`**
+  **3. `this.routes[path] = callback`**
 
 - **`this.routes`** adalah objek yang menyimpan daftar semua rute yang terdaftar dalam router.
 - **`this.routes[path]`**:
+
   - Menyimpan pasangan `path` dan `callback`.
   - Ketika rute diakses (misalnya, URL adalah `http://example.com/#/about`), router akan menjalankan callback yang sesuai, yaitu `this.routes["/about"]`.
 
-##### **4. Tipe Return `void`**
+  **4. Tipe Return `void`**
 
 - **`void`** berarti metode ini **tidak mengembalikan nilai apa pun**. Fungsinya hanya untuk menambahkan rute ke objek `routes`.
 
@@ -649,6 +693,7 @@ addRoute(path: string, callback: () => void): void {
 
 #### **8. Ilustrasi Penyimpanan dalam `this.routes`**
 
+Setelah rute ditambahkan menggunakan `addRoute`, semua pasangan path dan callback disimpan dalam objek `this.routes`. Router memanfaatkan data ini untuk memproses rute berdasarkan hash URL yang aktif.  
 Misalkan Anda memanggil `addRoute` seperti ini:
 
 ```typescript
@@ -687,6 +732,8 @@ Ketika pengguna mengakses URL `http://example.com/#/about`, router akan:
 ---
 
 #### **9. Contoh Penggunaan**
+
+Pada file `index.ts`, metode `addRoute` digunakan untuk mendaftarkan rute seperti Home, About, dan Help. Setiap rute memiliki callback yang merender konten halaman secara dinamis.
 
 **Mendaftarkan Rute:**
 
@@ -788,100 +835,136 @@ Jika pengguna mengakses `http://example.com/#/about`:
 
 ### **4. Deployment Keberbagai Hosting**
 
+Proses deployment adalah langkah penting untuk memastikan aplikasi Anda dapat dijalankan di berbagai platform, baik untuk keperluan pengembangan lokal, demo, maupun produksi. Dalam proyek ini, kita akan mendukung tiga jenis hosting: **lokal (development)**, **GitHub Pages (demo/pre-release)**, dan **ESP32-C3 (production)**. Setiap jenis hosting memiliki kebutuhan dan workflow tersendiri, seperti yang dijelaskan berikut.
+
+---
+
 #### **a. Hosting Lokal (Development)**
 
+**Tujuan:**  
+Digunakan selama pengembangan untuk memantau dan menguji aplikasi secara real-time di lingkungan lokal. Anda dapat menjalankan server lokal yang menyajikan aplikasi dan memantau perubahan CSS atau kode tanpa harus melakukan build secara manual.
+
+**Langkah:**
+
 1. Jalankan:
+
    ```bash
    npm run dev
    ```
+
+   Skrip ini akan:
+
+   - Membuild aplikasi menggunakan **esbuild** dalam mode development.
+   - Menyajikan folder `dist` melalui **http-server**.
+
 2. Akses aplikasi di browser melalui:
    ```
    http://localhost:8080
    ```
 
+**Catatan:**
+
+- Perubahan pada file kode atau CSS langsung diterapkan tanpa perlu menyegarkan halaman (hot reload).
+- Mode ini menggunakan sourcemap untuk mempermudah debugging.
+
+---
+
 #### **b. Hosting Demo (GitHub Pages)**
 
+**Tujuan:**  
+GitHub Pages digunakan sebagai tempat untuk mendemonstrasikan aplikasi Anda kepada tim, klien, atau publik. Pre-release ini dioptimalkan untuk hosting di subdirektori GitHub Pages, seperti `https://username.github.io/smartsenselink`.
+
+**Langkah:**
+
 1. Build untuk pre-release:
+
    ```bash
    npm run pre-release
    ```
+
+   Skrip ini akan membuild aplikasi dengan `publicPath` yang sesuai untuk subdirektori (`/smartsenselink`).
+
 2. Deploy ke GitHub Pages:
+
    ```bash
    npm run deploy:github
    ```
+
+   Skrip ini akan:
+
+   - Mengunggah folder `dist` ke branch `gh-pages` menggunakan package `gh-pages`.
+
 3. Akses aplikasi melalui:
    ```
    https://username.github.io/smartsenselink
    ```
 
+**Catatan:**
+
+- Anda perlu mengaktifkan GitHub Pages di pengaturan repository Anda (Settings > Pages).
+- URL aplikasi akan tersedia beberapa menit setelah proses deploy selesai.
+
+---
+
 #### **c. Hosting Produksi (ESP32-C3)**
 
+**Tujuan:**  
+Deployment ke ESP32-C3 bertujuan untuk menjalankan aplikasi di perangkat IoT. File hasil build diunggah ke sistem file ESP32-C3 (LittleFS atau SPIFFS), yang kemudian dapat diakses melalui IP perangkat.
+
+**Langkah:**
+
 1. Build untuk produksi:
+
    ```bash
    npm run build:production
    ```
+
+   Skrip ini menghasilkan aplikasi yang dioptimalkan untuk performa terbaik.
+
 2. Upload ke ESP32-C3:
 
-   - File `scripts/upload-to-esp32.js` harus mengunggah folder `dist` ke LittleFS atau SPIFFS. Contoh skrip upload:
+   - File `scripts/upload-to-esp32.js` akan digunakan untuk mengunggah folder `dist` ke LittleFS/SPIFFS.
+   - Contoh skrip upload tersedia di sub-bab berikut.
 
-     ```javascript
-     const { exec } = require('child_process');
+3. Akses aplikasi melalui IP lokal perangkat:
+   ```
+   http://192.168.1.100
+   ```
 
-     exec(
-       'arduino-cli upload -p /dev/ttyUSB0 --fqbn esp32:esp32:esp32c3',
-       (err, stdout, stderr) => {
-         if (err) {
-           console.error(`Error: ${stderr}`);
-         } else {
-           console.log(`Success: ${stdout}`);
-         }
-       }
-     );
-     ```
+**Catatan:**
 
-3. Akses aplikasi di ESP32-C3 melalui IP lokal (misalnya: `http://192.168.1.100`).
+- Pastikan ESP32-C3 terhubung ke jaringan lokal Anda.
+- Port serial (misalnya, `/dev/ttyUSB0` atau `COM3`) harus diatur sesuai dengan sistem Anda.
+
+---
 
 #### **Alternatif File `scripts/upload-to-esp32.js`**
 
-File `scripts/upload-to-esp32.js` bertanggung jawab untuk mengunggah file hasil build dari folder `dist` ke **ESP32-C3** menggunakan **LittleFS** atau **SPIFFS**. Berikut adalah penjelasan detail dan contoh implementasinya.
+**Tujuan File `upload-to-esp32.js`:**
+
+- Mengotomatiskan proses pengunggahan file build ke ESP32-C3.
+- Mengintegrasikan proses ini ke workflow deployment (`npm run deploy:esp32`).
 
 ---
 
-##### **1. Tujuan File `upload-to-esp32.js`**
+##### **1. Menggunakan Arduino CLI**
 
-- Mengotomatiskan proses upload file hasil build (`index.html`, CSS, JS, dll.) ke sistem file ESP32-C3.
-- Menghindari langkah manual seperti menggunakan plugin Arduino IDE untuk mengunggah file.
-- Mendukung integrasi dengan workflow deployment (`npm run deploy:esp32`).
+**Kebutuhan:**
 
----
+- **Arduino CLI:** Digunakan untuk mengunggah file ke ESP32-C3 melalui LittleFS atau SPIFFS.
 
-##### **2. Persyaratan**
-
-Pastikan Anda memiliki:
-
-1. **Tool yang mendukung upload ke ESP32-C3**, seperti:
-   - **Arduino CLI**
-   - **esptool.py** (untuk flash firmware, termasuk file LittleFS/SPIFFS).
-2. **ESP32 LittleFS Plugin** atau library lain yang kompatibel dengan sistem file ESP32.
-3. Board ESP32-C3 terhubung ke komputer melalui port USB (misalnya, `/dev/ttyUSB0` atau `COM3`).
-
----
-
-##### **3. Contoh File `upload-to-esp32.js`**
-
-###### **Menggunakan Arduino CLI**
+**Contoh Skrip:**
 
 ```javascript
 const { exec } = require('child_process');
 const path = require('path');
 
-// Path direktori dist
+// Direktori hasil build
 const distPath = path.resolve(__dirname, '../dist');
 
 // Port serial ESP32-C3
-const port = 'COM3'; // Sesuaikan dengan port di sistem Anda (misalnya, /dev/ttyUSB0 di Linux)
+const port = 'COM3'; // Ganti sesuai dengan port Anda
 
-// Fungsi untuk menjalankan perintah shell
 function runCommand(command, description) {
   console.log(description);
   return new Promise((resolve, reject) => {
@@ -897,52 +980,43 @@ function runCommand(command, description) {
   });
 }
 
-// Proses upload
 (async function uploadToESP32() {
   try {
-    // Langkah 1: Verifikasi Arduino CLI
+    // Verifikasi Arduino CLI
     await runCommand('arduino-cli version', 'Memverifikasi Arduino CLI...');
 
-    // Langkah 2: Unggah file LittleFS
+    // Upload file LittleFS
     const uploadCommand = `arduino-cli upload -p ${port} --fqbn esp32:esp32:esp32c3 --input-dir ${distPath}`;
     await runCommand(uploadCommand, 'Mengunggah file ke ESP32-C3...');
 
-    console.log('🎉 Upload ke ESP32-C3 selesai!');
+    console.log('🎉 Upload selesai!');
   } catch (err) {
-    console.error('❌ Proses upload gagal:', err);
+    console.error('❌ Gagal mengunggah file:', err);
   }
 })();
 ```
 
 ---
 
-##### **4. Menggunakan ESPTool dan LittleFS Uploader**
+##### **2. Menggunakan ESPTool dan LittleFS Uploader**
 
-Jika Anda menggunakan Python dan `esptool.py` bersama LittleFS uploader, berikut adalah skripnya:
+**Kebutuhan:**
 
-###### **Install Library Tambahan**
+- **esptool.py**: Library Python untuk flashing ESP32.
+- **LittleFS Uploader**: Alat opsional untuk menangani file LittleFS/SPIFFS.
 
-1. Install **Python** dan **esptool.py**:
-
-   ```bash
-   pip install esptool
-   ```
-
-2. Install LittleFS uploader tool (opsional, tergantung kebutuhan).
-
-###### **Skrip Upload**
+**Contoh Skrip:**
 
 ```javascript
 const { exec } = require('child_process');
 const path = require('path');
 
-// Path folder dist
+// Direktori hasil build
 const distPath = path.resolve(__dirname, '../dist');
 
 // Port serial ESP32-C3
-const port = '/dev/ttyUSB0'; // Ganti sesuai port ESP32-C3 Anda
+const port = '/dev/ttyUSB0'; // Sesuaikan dengan port Anda
 
-// Fungsi menjalankan perintah shell
 function runCommand(command, description) {
   console.log(description);
   return new Promise((resolve, reject) => {
@@ -958,27 +1032,24 @@ function runCommand(command, description) {
   });
 }
 
-// Proses Upload
 (async function uploadToESP32() {
   try {
-    // 1. Format dan siapkan sistem file LittleFS
-    const formatCommand = `python3 littlefs-uploader.py --port ${port} --dist ${distPath}`;
-    await runCommand(formatCommand, 'Mengunggah file LittleFS ke ESP32-C3...');
+    // Mengunggah file LittleFS
+    const uploadCommand = `python3 littlefs-uploader.py --port ${port} --dist ${distPath}`;
+    await runCommand(uploadCommand, 'Mengunggah file ke ESP32-C3...');
 
     console.log('🎉 File berhasil diunggah ke ESP32-C3!');
   } catch (err) {
-    console.error('❌ Upload gagal:', err);
+    console.error('❌ Gagal mengunggah file:', err);
   }
 })();
 ```
 
 ---
 
-##### **5. Integrasi dengan Skrip `npm run deploy:esp32`**
+##### **3. Integrasi Skrip di `package.json`**
 
-Skrip ini dijalankan sebagai bagian dari workflow `npm run deploy:esp32`:
-
-**Skrip di `package.json`:**
+Tambahkan skrip berikut untuk mengintegrasikan proses deployment ke ESP32-C3:
 
 ```json
 "scripts": {
@@ -990,52 +1061,62 @@ Skrip ini dijalankan sebagai bagian dari workflow `npm run deploy:esp32`:
 
 ---
 
-##### **6. Cara Menjalankan**
-
-1. Pastikan board ESP32-C3 terhubung ke komputer.
-2. Jalankan perintah:
-   ```bash
-   npm run deploy:esp32
-   ```
-3. Hasilnya:
-   - Aplikasi dibuild menggunakan esbuild.
-   - File hasil build diunggah ke ESP32-C3 menggunakan LittleFS/SPIFFS.
-
----
-
-##### **Kesimpulan**
-
-- File `scripts/upload-to-esp32.js` bertugas mengunggah file ke ESP32-C3 menggunakan alat seperti **Arduino CLI** atau **esptool.py**.
-- Skrip ini diintegrasikan ke workflow `npm run deploy:esp32`.
-- Pastikan path port serial ESP32-C3 (`COM3` atau `/dev/ttyUSB0`) sesuai dengan sistem Anda.
-
----
-
 ### **5. Tailwind CSS**
 
-Tailwind CSS digunakan untuk styling. Prosesnya mencakup:
+**Tailwind CSS** adalah framework utility-first yang digunakan untuk mempercepat proses styling dalam proyek ini. Dengan pendekatan utility-first, Anda dapat mengatur tampilan elemen langsung melalui kelas-kelas yang sudah disediakan oleh Tailwind, tanpa perlu menulis CSS secara manual.
 
-1. Tambahkan direktori konten di `tailwind.config.js`:
+Proses konfigurasi dan penggunaannya dalam proyek ini mencakup pengaturan direktori konten, mode development, dan mode build.
 
-   ```javascript
-   module.exports = {
-     content: ['./src/**/*.html', './src/**/*.ts'],
-     theme: {
-       extend: {},
-     },
-     plugins: [],
-   };
-   ```
+---
 
-2. Jalankan:
-   - Untuk development (watch mode):
-     ```bash
-     npm run tailwind:watch
-     ```
-   - Untuk build:
-     ```bash
-     npm run tailwind:build
-     ```
+#### **1. Konfigurasi `tailwind.config.js`**
+
+File konfigurasi `tailwind.config.js` memastikan bahwa Tailwind CSS hanya memproses kelas yang digunakan di dalam proyek. Hal ini dilakukan untuk mengurangi ukuran file CSS hasil build dengan menghapus kelas yang tidak terpakai (purging).
+
+**Contoh isi `tailwind.config.js`:**
+
+```javascript
+module.exports = {
+  content: ['./src/**/*.html', './src/**/*.ts'], // Lokasi file yang menggunakan Tailwind
+  theme: {
+    extend: {}, // Untuk memperluas konfigurasi default Tailwind
+  },
+  plugins: [], // Menambahkan plugin Tailwind (opsional)
+};
+```
+
+**Penjelasan:**
+
+- **`content`:** Direktori atau file yang akan dipindai untuk kelas Tailwind.
+- **`theme.extend`:** Memperluas tema default Tailwind (misalnya, menambahkan warna atau font baru).
+- **`plugins`:** Menambahkan fungsionalitas tambahan seperti plugin form, typography, dll.
+
+---
+
+#### **2. Menjalankan Tailwind CSS**
+
+Setelah konfigurasi selesai, Anda dapat menjalankan Tailwind CSS dalam dua mode utama:
+
+**a. Watch Mode (Untuk Development):**
+Gunakan watch mode untuk memantau perubahan di file HTML atau TypeScript selama pengembangan. Tailwind akan secara otomatis menghasilkan file CSS setiap kali ada perubahan.
+
+```bash
+npm run tailwind:watch
+```
+
+**b. Build Mode (Untuk Produksi):**
+Mode ini digunakan untuk menghasilkan file CSS final yang sudah dimodifikasi dan diperkecil (minified) untuk ukuran file yang lebih kecil.
+
+```bash
+npm run tailwind:build
+```
+
+---
+
+**Catatan Penting:**
+
+- Watch mode cocok digunakan saat bekerja di lingkungan development karena memungkinkan pembaruan styling secara real-time.
+- Build mode harus digunakan untuk produksi agar file CSS lebih kecil dan optimal.
 
 ---
 
