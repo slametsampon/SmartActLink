@@ -45,12 +45,11 @@
   - [**Langkah 5: Upload Firmware**](#langkah-5-upload-firmware)
   - [**Langkah 6: Akses Website**](#langkah-6-akses-website)
   - [**Catatan**](#catatan)
-- [**Lebih Detail terkait esbuild**](#lebih-detail-terkait-esbuild)
+- [**Lebih Detail Terkait esbuild**](#lebih-detail-terkait-esbuild)
   - [**1. Perintah Dasar esbuild**](#1-perintah-dasar-esbuild)
   - [**2. Opsi-Opsi Penting esbuild**](#2-opsi-opsi-penting-esbuild)
-  - [**3. Contoh Perintah Lengkap**](#3-contoh-perintah-lengkap)
-  - [**4. Rekomendasi untuk Proyek SPA**](#4-rekomendasi-untuk-proyek-spa)
-  - [**5. Sumber Daya Tambahan**](#5-sumber-daya-tambahan)
+  - [**Rekomendasi untuk Pengembangan SPA**](#rekomendasi-untuk-pengembangan-spa)
+  - [**Sumber Daya Tambahan**](#sumber-daya-tambahan)
 - [**API methode esbuild.build**](#api-methode-esbuildbuild)
   - [**Apa itu `esbuild.build`?**](#apa-itu-esbuildbuild)
   - [**Struktur Dasar `esbuild.build`**](#struktur-dasar-esbuildbuild)
@@ -1782,227 +1781,215 @@ void loop() {
   ```
   Gunakan IP yang ditampilkan pada Serial Monitor untuk mengakses server.
 
-### **Lebih Detail terkait esbuild**
+### **Lebih Detail Terkait esbuild**
+
+**esbuild** adalah alat build modern yang dirancang untuk menggabungkan, meminifikasi, dan mengoptimalkan file proyek berbasis web. Dengan performa tinggi dan pendekatan berbasis **JavaScript/TypeScript**, esbuild memungkinkan pengembang untuk menghasilkan aplikasi yang efisien dan ringan, baik untuk pengembangan maupun produksi.
+
+Sebagai alat build, esbuild bekerja dengan membaca file entry point, menganalisis semua dependensinya, lalu menghasilkan file output yang telah dioptimalkan. Dalam konteks pengembangan **Single Page Application (SPA)** seperti yang sedang kita bangun, esbuild memainkan peran penting untuk memastikan semua komponen (HTML, CSS, TypeScript) digabungkan menjadi file yang siap digunakan di berbagai lingkungan hosting.
+
+---
 
 #### **1. Perintah Dasar esbuild**
 
-Format dasar perintah esbuild:
+Format dasar perintah **esbuild** adalah:
 
 ```bash
 esbuild [input file] [options]
 ```
 
-Contoh:
+**Contoh Perintah:**
 
 ```bash
 esbuild src/index.html --bundle --outfile=dist/index.html --minify
 ```
 
+**Penjelasan:**
+
+1. **`src/index.html`:**  
+   File input utama yang menjadi titik awal untuk proses bundling. Esbuild akan membaca semua file yang diimpor di dalam file ini (seperti CSS dan TypeScript).
+2. **`--bundle`:**  
+   Menginstruksikan esbuild untuk menggabungkan semua file dan dependensi menjadi satu file output yang efisien.
+3. **`--outfile=dist/index.html`:**  
+   Menentukan lokasi dan nama file hasil build. Dalam contoh ini, file output akan disimpan di folder `dist` dengan nama `index.html`.
+4. **`--minify`:**  
+   Mengaktifkan minifikasi untuk memperkecil ukuran file hasil build dengan menghapus spasi, komentar, dan elemen tak terpakai lainnya.
+
 ---
 
 #### **2. Opsi-Opsi Penting esbuild**
 
+Berikut adalah opsi-opsi penting pada esbuild yang relevan untuk pengembangan SPA, termasuk cara kerjanya dan rekomendasinya:
+
+---
+
 **a. Input dan Output**
 
-1. **`--entry-points [file(s)]`:**
+- **`entryPoints`:**  
+  Menentukan file entry point yang akan digunakan oleh esbuild untuk memulai proses bundling.  
+  Contoh:
 
-   - Menentukan file **entry point** untuk bundling.
-   - Bisa berupa satu file atau array file.
-   - Contoh:
-     ```bash
-     esbuild --entry-points=src/index.ts
-     ```
+  ```javascript
+  entryPoints: ['src/index.html'],
+  ```
 
-2. **`--outfile [file]`:**
+- **`outdir` atau `outfile`:**  
+  Menentukan lokasi output file hasil build.  
+  Contoh:
+  ```javascript
+  outdir: 'dist', // Semua hasil build disimpan di folder dist
+  ```
 
-   - Menentukan nama file hasil build.
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --outfile=dist/bundle.js
-     ```
+**Rekomendasi:**
 
-3. **`--outdir [directory]`:**
+- Gunakan **`entryPoints: ['src/index.html']`** untuk proyek SPA agar bundling otomatis dimulai dari file HTML.
+- Tetapkan folder output seperti `dist` untuk menjaga struktur proyek tetap terorganisir.
 
-   - Menentukan direktori untuk menyimpan hasil build.
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --outdir=dist
-     ```
+---
 
-4. **`--metafile`:**
-   - Menghasilkan file metadata build (berguna untuk debugging dan analisis ukuran file).
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --outfile=dist/bundle.js --metafile
-     ```
+**b. Bundling dan Minifikasi**
 
-**b. Opsi Output**
+- **`bundle`:**  
+  Menggabungkan semua file (HTML, CSS, TypeScript) dan dependensi menjadi satu atau beberapa file output.
 
-1. **`--bundle`:**
+- **`minify`:**  
+  Memperkecil ukuran file dengan menghapus elemen yang tidak diperlukan.
 
-   - Menggabungkan semua dependensi menjadi satu file.
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --bundle --outfile=dist/bundle.js
-     ```
+**Cara Kerja:**
 
-2. **`--minify`:**
+- Esbuild membaca semua impor di file entry point dan menghasilkan file output yang telah dioptimalkan.
+- Proses ini mencakup gabungan file TypeScript, CSS, atau modul-modul pihak ketiga.
 
-   - Memperkecil (minify) file hasil build untuk produksi.
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --bundle --outfile=dist/bundle.js --minify
-     ```
+**Rekomendasi:**
 
-3. **`--sourcemap`:**
+- Selalu gunakan **`bundle`** untuk mengurangi jumlah request HTTP.
+- Aktifkan **`minify`** pada mode produksi untuk mengoptimalkan performa.
 
-   - Menambahkan sourcemap untuk debugging.
-   - Opsi tambahan:
-     - `inline`: Sourcemap disertakan dalam file hasil build.
-     - `external`: Sourcemap dibuat di file terpisah.
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --bundle --outfile=dist/bundle.js --sourcemap=inline
-     ```
+---
 
-4. **`--public-path`:**
-   - Menentukan path dasar untuk file statis.
-   - Berguna untuk hosting di subdirektori (misalnya, GitHub Pages).
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --bundle --outfile=dist/bundle.js --public-path=/SPA
-     ```
+**c. Loader**
 
-**c. Opsi Loader**
+- **`loader`:**  
+  Menentukan cara esbuild menangani file dengan ekstensi tertentu.  
+  Contoh:
+  ```javascript
+  loader: {
+    '.ts': 'ts',
+    '.css': 'css',
+  },
+  ```
 
-1. **`--loader=[ext]:[type]`:**
+**Cara Kerja:**
 
-   - Menentukan cara memuat file dengan ekstensi tertentu.
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --loader:.ts=ts --loader:.css=css
-     ```
+- Esbuild menggunakan loader untuk membaca file non-JavaScript (seperti TypeScript atau CSS), lalu mengonversinya menjadi format yang dapat digunakan dalam JavaScript.
 
-2. **File Loader yang Didukung:**
-   - `.js`, `.jsx`, `.ts`, `.tsx`, `.css`, `.json`, `.txt`, `.png`, `.jpg`, `.svg`, dll.
+**Rekomendasi:**
+
+- Pastikan untuk mendefinisikan loader untuk `.ts` (TypeScript) dan `.css` dalam proyek SPA Anda.
+- Tambahkan loader lain jika proyek membutuhkan file seperti gambar atau font.
+
+---
 
 **d. Watch Mode**
 
-1. **`--watch`:**
+- **`watch`:**  
+  Mengaktifkan mode pemantauan untuk otomatis membuild ulang setiap kali ada perubahan pada file sumber.  
+  Contoh:
+  ```javascript
+  watch: true,
+  ```
 
-   - Memantau perubahan file dan otomatis membuild ulang.
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --bundle --outfile=dist/bundle.js --watch
-     ```
+**Cara Kerja:**
 
-2. **`--watch=verbose`:**
-   - Menampilkan log lebih detail saat watch mode.
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --bundle --outfile=dist/bundle.js --watch=verbose
-     ```
+- Esbuild memantau perubahan file yang terdaftar dalam konfigurasi dan secara otomatis menghasilkan file baru tanpa perlu menjalankan perintah build secara manual.
 
-**e. Target Platform**
+**Rekomendasi:**
 
-1. **`--platform`:**
-
-   - Menentukan platform target (browser, node, atau neutral).
-   - Default: `browser`.
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --platform=browser --outfile=dist/bundle.js
-     ```
-
-2. **`--target`:**
-   - Menentukan target environment (ES5, ES6, atau ESNext).
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --target=es2015 --outfile=dist/bundle.js
-     ```
-
-**f. Mode Build**
-
-1. **`--define`:**
-
-   - Menyisipkan variabel global (biasanya digunakan untuk environment).
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --bundle --outfile=dist/bundle.js --define:process.env.NODE_ENV='"production"'
-     ```
-
-2. **`--format`:**
-   - Menentukan format output (iife, cjs, esm).
-   - Default: `iife` untuk browser.
-   - Contoh:
-     ```bash
-     esbuild src/index.ts --format=esm --outfile=dist/bundle.js
-     ```
+- Gunakan **`watch`** selama pengembangan untuk meningkatkan produktivitas.
+- Hindari penggunaan mode watch di lingkungan produksi.
 
 ---
 
-#### **3. Contoh Perintah Lengkap**
+**e. Sourcemap**
 
-**a. Build untuk Development**
+- **`sourcemap`:**  
+  Mengaktifkan sourcemap untuk membantu melacak sumber file asli selama debugging.  
+  Contoh:
+  ```javascript
+  sourcemap: true,
+  ```
 
-```bash
-esbuild src/index.ts --bundle --outdir=dist --sourcemap --watch
-```
+**Cara Kerja:**
 
-**Penjelasan:**
+- Esbuild menghasilkan file sourcemap yang memungkinkan Anda melihat file TypeScript atau CSS asli di developer tools browser.
 
-- `--bundle`: Menggabungkan semua dependensi.
-- `--outdir=dist`: Menyimpan hasil build di folder `dist`.
-- `--sourcemap`: Menambahkan sourcemap untuk debugging.
-- `--watch`: Memantau perubahan file dan membuild ulang secara otomatis.
+**Rekomendasi:**
 
-  **b. Build untuk Production**
-
-```bash
-esbuild src/index.ts --bundle --outdir=dist --minify --public-path=/SPA
-```
-
-**Penjelasan:**
-
-- `--minify`: Memperkecil ukuran file hasil build.
-- `--public-path=/SPA`: Path file statis untuk hosting di subdirektori.
-
-  **c. Build untuk Browser dengan ES6**
-
-```bash
-esbuild src/index.ts --bundle --outfile=dist/bundle.js --target=es6 --platform=browser
-```
-
-**Penjelasan:**
-
-- `--target=es6`: Menghasilkan file ES6.
-- `--platform=browser`: Target untuk browser.
+- Aktifkan **`sourcemap`** hanya pada mode pengembangan untuk mempermudah debugging.
+- Nonaktifkan di produksi untuk mengurangi ukuran file.
 
 ---
 
-#### **4. Rekomendasi untuk Proyek SPA**
+**f. Public Path**
 
-**Perintah Development:**
+- **`publicPath`:**  
+  Menentukan path dasar untuk file hasil build.  
+  Contoh:
+  ```javascript
+  publicPath: '/subdirectory/',
+  ```
 
-```bash
-esbuild src/index.ts --bundle --outdir=dist --sourcemap --watch
-```
+**Cara Kerja:**
 
-**Perintah Pre-release (GitHub Pages):**
+- Public path digunakan untuk memastikan referensi asset (CSS, JS, gambar) tetap valid saat aplikasi dihosting di subdirektori, seperti GitHub Pages.
 
-```bash
-esbuild src/index.ts --bundle --outdir=dist --minify --public-path=/SPA
-```
+**Rekomendasi:**
 
-**Perintah Production (ESP32-C3):**
-
-```bash
-esbuild src/index.ts --bundle --outdir=dist --minify --public-path=/
-```
+- Gunakan **`publicPath: '/'`** untuk hosting lokal atau di root domain.
+- Gunakan **`publicPath: '/nama-repo/'`** untuk hosting di GitHub Pages.
 
 ---
 
-#### **5. Sumber Daya Tambahan**
+**g. Log Level**
+
+- **`logLevel`:**  
+  Menentukan tingkat log yang ditampilkan selama proses build.  
+  Contoh:
+  ```javascript
+  logLevel: 'info',
+  ```
+
+**Cara Kerja:**
+
+- Log level menentukan seberapa banyak informasi yang ditampilkan oleh esbuild selama proses build.
+
+**Rekomendasi:**
+
+- Gunakan **`logLevel: 'info'`** selama pengembangan untuk melihat status build.
+- Gunakan **`logLevel: 'silent'`** di CI/CD atau skrip otomatis untuk menghindari output yang tidak perlu.
+
+---
+
+#### **Rekomendasi untuk Pengembangan SPA**
+
+1. **Pengembangan Lokal:**
+
+   - Gunakan **watch mode** dan **sourcemap** untuk debugging real-time.
+   - Pastikan folder output (`dist`) sudah bersih sebelum build baru dengan menambahkan skrip `clean`.
+
+2. **Pre-release (GitHub Pages):**
+
+   - Setel **publicPath** sesuai nama repository (misalnya, `/nama-repo/`).
+   - Gunakan **minify** untuk mengoptimalkan file CSS dan JavaScript.
+
+3. **Produksi (ESP32-C3):**
+   - Nonaktifkan sourcemap untuk mengurangi ukuran file.
+   - Gunakan konfigurasi **minify** dan **bundle** untuk menghasilkan aplikasi yang cepat dan ringan.
+
+Dengan konfigurasi dan opsi ini, esbuild dapat menjadi alat build yang cepat, ringan, dan sangat cocok untuk pengembangan aplikasi SPA berbasis LitElement, Tailwind CSS, dan TypeScript.
+
+---
+
+#### **Sumber Daya Tambahan**
 
 Untuk dokumentasi lengkap esbuild, kunjungi:  
 [Esbuild Documentation](https://esbuild.github.io/)
