@@ -64,7 +64,7 @@
 - [**Komparasi dan Rekomendasi esbuild**](#komparasi-dan-rekomendasi-esbuild)
   - [**Pilih Pendekatan CLI Jika:**](#pilih-pendekatan-cli-jika)
   - [**Pilih Pendekatan API `esbuild.build` Jika:**](#pilih-pendekatan-api-esbuildbuild-jika)
-- [**Rekomendasi untuk Proyek SPA**](#rekomendasi-untuk-proyek-spa)
+  - [**Rekomendasi untuk Proyek SPA**](#rekomendasi-untuk-proyek-spa)
 
 ### **Kata Pengantar**
 
@@ -2224,7 +2224,7 @@ Kedua pendekatan ini memiliki kelebihan dan kekurangan masing-masing. Pilihan te
 
 ---
 
-### **Rekomendasi untuk Proyek SPA**
+#### **Rekomendasi untuk Proyek SPA**
 
 Dalam pengembangan **SPA berbasis LitElement, Tailwind CSS, dan TypeScript**, pendekatan menggunakan **API `esbuild.build`** lebih direkomendasikan karena fleksibilitasnya. Dengan API ini, Anda dapat:
 
