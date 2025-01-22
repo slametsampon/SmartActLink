@@ -336,37 +336,6 @@ module.exports = {
 
 ---
 
-**3. Menjalankan Tailwind CSS**
-
-Setelah konfigurasi selesai, Tailwind CSS dapat dijalankan dalam dua mode utama:
-
-**a. Watch Mode (Untuk Development):**  
-Gunakan watch mode untuk memantau perubahan selama pengembangan. Tailwind akan secara otomatis menghasilkan file CSS baru setiap kali ada perubahan di file HTML atau TypeScript.
-
-```bash
-npm run tailwind:watch
-```
-
-**b. Build Mode (Untuk Produksi):**  
-Mode ini digunakan untuk menghasilkan file CSS akhir yang telah diminifikasi, sehingga ukuran file lebih kecil dan optimal untuk produksi.
-
-```bash
-npm run tailwind:build
-```
-
----
-
-**4. Catatan Penting**
-
-- **Watch Mode:**  
-  Mode ini cocok digunakan saat pengembangan karena memungkinkan pembaruan tampilan secara real-time tanpa perlu menjalankan perintah build secara manual.
-- **Build Mode:**  
-  Mode ini wajib digunakan untuk produksi, memastikan bahwa file CSS yang dihasilkan hanya berisi kelas yang benar-benar digunakan dan telah diminifikasi untuk performa optimal.
-
-Dengan langkah-langkah di atas, Anda dapat memanfaatkan kekuatan Tailwind CSS untuk mempercepat styling proyek Anda tanpa mengorbankan fleksibilitas atau performa.
-
----
-
 #### **4. Skrip pada `package.json`**
 
 Kita akan mengatur skrip di `package.json` untuk mendukung kebutuhan development, pre-release, production, dan deployment.
@@ -601,34 +570,78 @@ Skrip ini digunakan untuk membersihkan folder `dist` sebelum membuat build baru.
 - **Tujuan:**  
   Mengatur file **CSS** menggunakan Tailwind CSS dalam mode development atau production.
 
-**Skrip:**
-
-```json
-"tailwind:build": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
-"tailwind:watch": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch"
-```
-
-**Cara Kerja:**
-
-1. Jalankan `npm run tailwind:build` untuk menghasilkan file CSS final (minifikasi).
-2. Jalankan `npm run tailwind:watch` untuk memonitor perubahan CSS selama pengembangan.
+**Tailwind CSS** adalah framework utility-first yang dirancang untuk mempercepat proses styling dengan menggunakan kelas-kelas bawaan tanpa perlu menulis CSS secara manual. Dalam proyek ini, Tailwind CSS diintegrasikan ke dalam workflow pengembangan untuk mendukung dua mode utama: **development (watch mode)** dan **production (build mode)**. Selain itu, proses ini dapat digabungkan dengan esbuild untuk menciptakan workflow penuh yang efisien.
 
 ---
 
-**6. Gabungan Skrip untuk Workflow Full Development**
+- **1. Skrip Tailwind CSS**
 
-- **Tujuan:**  
-  Menjalankan **esbuild** (development) dan **Tailwind CSS Watch** secara paralel.
-
-**Skrip:**
+Untuk mendukung penggunaan Tailwind CSS, tambahkan skrip berikut ke dalam `package.json`:
 
 ```json
-"dev:full": "concurrently \"npm run tailwind:watch\" \"npm run dev\""
+"scripts": {
+  "tailwind:build": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
+  "tailwind:watch": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch"
+}
 ```
 
-**Cara Kerja:**
+**Penjelasan Skrip:**
 
-1. Jalankan `npm run dev:full` untuk menjalankan kedua proses sekaligus.
+1. **`tailwind:build`:**  
+   Digunakan untuk menghasilkan file CSS final yang telah diminifikasi. Skrip ini cocok untuk digunakan dalam mode produksi.
+2. **`tailwind:watch`:**  
+   Digunakan untuk memantau perubahan pada file sumber CSS selama pengembangan. Tailwind akan secara otomatis menghasilkan file CSS baru setiap kali ada perubahan.
+
+---
+
+- **2. Cara Menjalankan Tailwind CSS**
+
+Setelah konfigurasi selesai, Tailwind CSS dapat dijalankan dalam dua mode berikut:
+
+- **a. Watch Mode (Untuk Development):**  
+  Gunakan watch mode untuk memantau perubahan selama pengembangan. Tailwind akan menghasilkan file CSS baru secara otomatis.
+
+  ```bash
+  npm run tailwind:watch
+  ```
+
+- **b. Build Mode (Untuk Produksi):**  
+  Mode ini digunakan untuk menghasilkan file CSS yang diminifikasi dan optimal untuk produksi.
+  ```bash
+  npm run tailwind:build
+  ```
+
+**Catatan Penting:**
+
+- **Watch Mode** sangat cocok untuk pengembangan karena pembaruan styling dapat dilihat secara real-time tanpa menjalankan perintah build manual.
+- **Build Mode** wajib digunakan untuk produksi karena menghasilkan file CSS yang lebih kecil dengan hanya menyertakan kelas yang digunakan.
+
+---
+
+- **3. Mengintegrasikan Tailwind CSS dengan Workflow Pengembangan**
+
+Untuk mendukung workflow pengembangan penuh, Anda dapat menggabungkan proses **Tailwind CSS (watch mode)** dengan **esbuild**. Hal ini memungkinkan Anda untuk menjalankan keduanya secara paralel, sehingga aplikasi dapat di-build sekaligus memantau perubahan secara real-time.
+
+Tambahkan skrip berikut ke dalam `package.json`:
+
+```json
+"scripts": {
+  "dev:full": "concurrently \"npm run tailwind:watch\" \"npm run dev\""
+}
+```
+
+**Penjelasan Skrip:**
+
+- **`dev:full`:** Skrip ini menjalankan `tailwind:watch` untuk memantau perubahan CSS dan `dev` untuk menjalankan esbuild secara paralel.
+- **`concurrently`:** Paket yang digunakan untuk menjalankan beberapa proses dalam satu perintah.
+
+**Cara Menjalankan Workflow Full Development:**
+
+1. Jalankan perintah berikut untuk menjalankan proses pengembangan penuh:
+   ```bash
+   npm run dev:full
+   ```
+2. Tailwind CSS akan memantau perubahan styling, sementara esbuild akan mem-build aplikasi secara otomatis setiap kali ada perubahan pada file sumber.
 
 ---
 
