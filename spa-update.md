@@ -889,6 +889,8 @@ export class HeaderComponent extends LitElement {
 customElements.define('app-header', HeaderComponent);
 ```
 
+[Lebih lanjut dengan Routing](#langkah-7-mekanisme-routing)
+
 #### 2. **Komponen Footer**
 
 Buat file `src/components/footer.ts`:
@@ -1078,11 +1080,58 @@ export default class Router {
 }
 ```
 
+1. **Event Listener untuk `hashchange`:**
+
+   ```typescript
+   window.addEventListener('hashchange', () => this.handleRoute());
+   ```
+
+   - Event `hashchange` dipicu setiap kali hash di URL berubah, baik karena pengguna mengklik tombol **Back**/**Forward** di browser, atau melalui navigasi manual (misalnya, mengetik URL baru dengan hash).
+
+2. **Event Listener untuk `load`:**
+
+   ```typescript
+   window.addEventListener('load', () => this.handleRoute());
+   ```
+
+   - Event `load` memastikan bahwa rute yang sesuai diproses saat halaman pertama kali dimuat. Ini penting untuk memuat halaman awal berdasarkan hash di URL.
+
+3. **Proses Routing Dinamis:**
+   ```typescript
+   const path = window.location.hash.slice(1) || '/';
+   if (this.routes[path]) {
+     this.routes[path]();
+   } else {
+     console.error(`Route not found: ${path}`);
+   }
+   ```
+   - Dengan membaca nilai hash (menghilangkan karakter `#`), fungsi `handleRoute()` memproses rute yang sesuai dengan `this.routes[path]`. Jika pengguna kembali atau maju ke rute sebelumnya, hash diperbarui, dan callback untuk rute yang sesuai dijalankan.
+
+---
+
+**Skema Kerja dengan Forward dan Back**
+
+1. **Pengguna Navigasi ke Halaman Baru:**
+
+   - Hash diperbarui, misalnya dari `#/home` ke `#/about`.
+   - Event `hashchange` dipicu, dan `handleRoute()` dijalankan.
+
+2. **Pengguna Klik Tombol Back:**
+
+   - Browser kembali ke hash sebelumnya (misalnya, `#/home`).
+   - Event `hashchange` dipicu lagi, memanggil `handleRoute()` untuk memuat rute `#/home`.
+
+3. **Pengguna Klik Tombol Forward:**
+   - Browser maju ke hash berikutnya (misalnya, `#/about`).
+   - Event `hashchange` dipicu, dan `handleRoute()` memuat rute `#/about`.
+
 ---
 
 **3. Cara Menggunakan `Router`**
 
 Setelah Anda membuat `router.ts`, Anda dapat menggunakannya di file `index.ts` untuk mengatur rute aplikasi Anda.
+
+Untuk menggunakan **hash-based routing**, Anda hanya perlu memastikan bahwa URL rute diatur dengan awalan hash (`#`). Dalam kode Anda, sesuaikan path pada `addRoute` agar mencerminkan penggunaan hash-based routing. Berikut adalah versi yang telah disesuaikan:
 
 **Contoh di `index.ts`:**
 
@@ -1093,7 +1142,7 @@ import Router from './router';
 const router = new Router();
 
 // Tambahkan rute untuk Home
-router.addRoute('/', () => {
+router.addRoute('#/', () => {
   document.body.innerHTML = `
     <app-header></app-header>
     <page-home></page-home>
@@ -1102,7 +1151,7 @@ router.addRoute('/', () => {
 });
 
 // Tambahkan rute untuk About
-router.addRoute('/about', () => {
+router.addRoute('#/about', () => {
   document.body.innerHTML = `
     <app-header></app-header>
     <page-about></page-about>
@@ -1111,7 +1160,7 @@ router.addRoute('/about', () => {
 });
 
 // Tambahkan rute untuk Help
-router.addRoute('/help', () => {
+router.addRoute('#/help', () => {
   document.body.innerHTML = `
     <app-header></app-header>
     <page-help></page-help>
@@ -1280,13 +1329,13 @@ Misalkan Anda memanggil `addRoute` seperti ini:
 
 ```typescript
 const router = new Router();
-router.addRoute('/', () => {
+router.addRoute('#/', () => {
   console.log('Home Page');
 });
-router.addRoute('/about', () => {
+router.addRoute('#/about', () => {
   console.log('About Page');
 });
-router.addRoute('/help', () => {
+router.addRoute('#/help', () => {
   console.log('Help Page');
 });
 ```
@@ -1321,10 +1370,14 @@ Pada file `index.ts`, metode `addRoute` digunakan untuk mendaftarkan rute sepert
 
 Berikut adalah bagaimana Anda menggunakan metode `addRoute`:
 
-```typescript
+````typescript
+import Router from './router';
+
+// Inisialisasi router
 const router = new Router();
 
-router.addRoute('/', () => {
+// Tambahkan rute untuk Home
+router.addRoute('#/', () => {
   document.body.innerHTML = `
     <app-header></app-header>
     <page-home></page-home>
@@ -1332,7 +1385,8 @@ router.addRoute('/', () => {
   `;
 });
 
-router.addRoute('/about', () => {
+// Tambahkan rute untuk About
+router.addRoute('#/about', () => {
   document.body.innerHTML = `
     <app-header></app-header>
     <page-about></page-about>
@@ -1340,14 +1394,15 @@ router.addRoute('/about', () => {
   `;
 });
 
-router.addRoute('/help', () => {
+// Tambahkan rute untuk Help
+router.addRoute('#/help', () => {
   document.body.innerHTML = `
     <app-header></app-header>
     <page-help></page-help>
     <app-footer></app-footer>
   `;
 });
-```
+
 
 **Output `this.routes`:**
 
@@ -1377,7 +1432,7 @@ Setelah rute ditambahkan, `this.routes` akan terlihat seperti ini:
     `;
   }
 }
-```
+````
 
 ---
 
