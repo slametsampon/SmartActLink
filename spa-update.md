@@ -44,6 +44,7 @@
     - [**Kekurangan:**](#kekurangan-1)
   - [**Komparasi dan Rekomendasi esbuild**](#komparasi-dan-rekomendasi-esbuild)
   - [**Rekomendasi untuk Proyek SPA**](#rekomendasi-untuk-proyek-spa)
+- [**Referensi**](#referensi)
 
 ---
 
@@ -2231,3 +2232,147 @@ Dalam pengembangan **SPA berbasis LitElement, Tailwind CSS, dan TypeScript**, pe
 3. Mendukung penambahan fitur tambahan, seperti pengelolaan multiple entry points untuk pengembangan yang lebih terstruktur.
 
 Namun, jika Anda hanya ingin mencoba prototipe cepat atau aplikasi kecil, pendekatan CLI sudah cukup untuk memenuhi kebutuhan dasar bundling.
+
+---
+
+### **Referensi**
+
+Berikut adalah rujukan untuk masing-masing topik yang dapat membantu Anda mempelajari lebih lanjut:
+
+---
+
+**1. LitElement**
+
+- **Website Resmi:**  
+  [https://lit.dev](https://lit.dev)  
+  Dokumentasi resmi LitElement, mencakup panduan dasar hingga advanced.
+- **Tutorial:**  
+  [LitElement Getting Started](https://lit.dev/docs/getting-started/)  
+  Panduan langkah-langkah untuk memulai proyek LitElement.
+
+---
+
+**2. esbuild**
+
+- **Website Resmi:**  
+  [https://esbuild.github.io](https://esbuild.github.io)  
+  Dokumentasi lengkap esbuild, termasuk opsi CLI dan API.
+- **Tutorial:**  
+  [Getting Started with esbuild](https://esbuild.github.io/getting-started/)  
+  Tutorial dasar untuk memahami penggunaan esbuild.
+
+---
+
+**3. Tailwind CSS**
+
+- **Website Resmi:**  
+  [https://tailwindcss.com](https://tailwindcss.com)  
+  Sumber utama untuk dokumentasi lengkap Tailwind CSS.
+- **Tutorial:**  
+  [Tailwind CSS Quick Start Guide](https://tailwindcss.com/docs/installation)  
+  Panduan instalasi dan implementasi Tailwind CSS.
+
+---
+
+**4. IoT & ESP32-C3**
+
+- **Website Resmi:**  
+  [Espressif Systems](https://www.espressif.com/en/products/socs/esp32-c3)  
+  Halaman resmi Espressif untuk spesifikasi ESP32-C3.
+- **Tutorial:**  
+  [ESP32-C3 Tutorials by Random Nerd Tutorials](https://randomnerdtutorials.com/?s=ESP32-C3)  
+  Koleksi tutorial praktis terkait ESP32-C3.
+
+---
+
+**5. Git & GitHub**
+
+- **Website Resmi:**  
+  [Git](https://git-scm.com)  
+  Dokumentasi resmi Git untuk sistem kontrol versi.
+  [GitHub](https://github.com)  
+  Situs utama GitHub untuk mengelola repository.
+- **Tutorial:**  
+  [Pro Git Book](https://git-scm.com/book/en/v2)  
+  Buku online gratis untuk memahami Git secara mendalam.  
+  [GitHub Guides](https://guides.github.com)  
+  Panduan resmi GitHub untuk pemula.
+
+---
+
+**6. VS Code**
+
+- **Website Resmi:**  
+  [Visual Studio Code](https://code.visualstudio.com)  
+  Unduh editor dan baca dokumentasi resmi.
+- **Tutorial:**  
+  [VS Code Documentation](https://code.visualstudio.com/docs)  
+  Panduan lengkap fitur VS Code.
+
+---
+
+**7. Component-Driven Development (CDD)**
+
+- **Artikel:**  
+  [Introducing Component-Driven Development](https://www.componentdriven.org/)  
+  Penjelasan mendalam tentang prinsip CDD.
+- **Tutorial:**  
+  [Component-Driven Development in Storybook](https://storybook.js.org/docs/react/get-started/introduction)  
+  Panduan penerapan CDD dengan alat seperti Storybook.
+
+---
+
+**8. Object-Oriented Programming (OOP)**
+
+- **Artikel:**  
+  [What is Object-Oriented Programming?](https://www.freecodecamp.org/news/what-is-object-oriented-programming/)  
+  Penjelasan dasar OOP untuk pemula.
+- **Tutorial:**  
+  [Learn OOP with Examples](https://www.w3schools.com/java/java_oop.asp)  
+  Tutorial penerapan OOP dengan contoh.
+
+---
+
+**9. TypeScript**
+
+- **Website Resmi:**  
+  [https://typescriptlang.org](https://typescriptlang.org)  
+  Dokumentasi resmi TypeScript.
+- **Tutorial:**  
+  [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)  
+  Panduan langkah-langkah belajar TypeScript.
+
+---
+
+**10. Node.js**
+
+- **Website Resmi:**  
+  [https://nodejs.org](https://nodejs.org)  
+  Dokumentasi Node.js untuk server-side JavaScript.
+- **Tutorial:**  
+  [Node.js Guide by MDN](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)  
+  Tutorial pengantar Node.js oleh Mozilla.
+
+---
+
+**11. NPM**
+
+- **Website Resmi:**  
+  [https://npmjs.com](https://npmjs.com)  
+  Situs resmi untuk manajemen paket JavaScript.
+- **Tutorial:**  
+  [What is NPM?](https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/)  
+  Panduan dasar untuk pemula.
+
+---
+
+**12. Single Page Application (SPA)**
+
+- **Artikel:**  
+  [What is a Single Page Application?](https://www.cloudflare.com/learning/performance/what-is-a-single-page-application/)  
+  Penjelasan tentang SPA dari Cloudflare.
+- **Tutorial:**  
+  [Building a Simple SPA with JavaScript](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Introduction)  
+  Panduan membangun SPA dari Mozilla MDN.
+
+---
