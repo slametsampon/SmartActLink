@@ -23,13 +23,13 @@
   - [4. **Halaman Help**](#4-halaman-help)
   - [5. **Halaman About**](#5-halaman-about)
 - [**Langkah 6: Mekanisme Routing**](#langkah-6-mekanisme-routing)
+  - [**Tips untuk Routing**](#tips-untuk-routing)
 - [**Langkah 7: Entry Point dan Index**](#langkah-7-entry-point-dan-index)
   - [**1. `entryPoints: ["src/index.ts"]`**](#1-entrypoints-srcindexts)
   - [**2. `entryPoints: ["src/index.html"]`**](#2-entrypoints-srcindexhtml)
   - [**3. Perbedaan Utama**](#3-perbedaan-utama)
   - [**4. Rekomendasi**](#4-rekomendasi)
 - [**Langkah 8: Deployment ke Berbagai Hosting**](#langkah-8-deployment-ke-berbagai-hosting)
-  - [**Tips untuk Routing**](#tips-untuk-routing)
 - [**Langkah 9: Deploy Aplikasi ke ESP32-C3**](#langkah-9-deploy-aplikasi-ke-esp32-c3)
   - [**Catatan Tambahan**](#catatan-tambahan)
 - [**Lebih Detail Terkait esbuild**](#lebih-detail-terkait-esbuild)
@@ -1364,6 +1364,15 @@ Jika pengguna mengakses `http://example.com/#/about`:
 
 ---
 
+#### **Tips untuk Routing**
+
+Dalam aplikasi SPA yang menggunakan hash-based routing, Anda mungkin menghadapi masalah saat memuat halaman selain halaman utama. Untuk mengatasinya:
+
+- Gunakan hash-based routing (misalnya: `/#/home`) agar navigasi halaman tetap berfungsi di GitHub Pages.
+- Alternatifnya, tambahkan file `.htaccess` di folder `dist` untuk memastikan semua permintaan diarahkan ke `index.html`.
+
+---
+
 ### **Langkah 7: Entry Point dan Index**
 
 Konfigurasi entry point pada **esbuild** menentukan file utama yang akan digunakan sebagai titik awal bundling aplikasi. Entry point ini sangat memengaruhi bagaimana esbuild memproses file dan menyusun strategi pengembangan aplikasi Anda. Dua pendekatan umum untuk entry point adalah:
@@ -1624,15 +1633,6 @@ Setelah GitHub Pages aktif, aplikasi Anda dapat diakses melalui URL:
 ```
 https://username.github.io/SPA
 ```
-
----
-
-#### **Tips untuk Routing**
-
-Dalam aplikasi SPA yang menggunakan hash-based routing, Anda mungkin menghadapi masalah saat memuat halaman selain halaman utama. Untuk mengatasinya:
-
-- Gunakan hash-based routing (misalnya: `/#/home`) agar navigasi halaman tetap berfungsi di GitHub Pages.
-- Alternatifnya, tambahkan file `.htaccess` di folder `dist` untuk memastikan semua permintaan diarahkan ke `index.html`.
 
 ---
 
